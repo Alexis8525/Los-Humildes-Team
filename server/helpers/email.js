@@ -21,7 +21,7 @@ const emailRegistro = async (datos) => {
         <></>
         <p>Hola ${name}, comprueba tu cuenta en ${domainn}</p>
         <p>Tu cuenta ya esta casi lista, solo debes confirmarla en el siguiente enlace: 
-        <a href="${reff}/#/users/confirm/${token}" >Confirmar Cuenta</a> </p>
+        <a href="${reff}/shared/confirm-account/${token}" >Confirmar Cuenta</a> </p>
         <p>Si tu no creaste esta cuenta, puedes ignorar el mensaje</p>
     `;
     //Enviar
@@ -74,7 +74,6 @@ const emailOlvidePass = async (datos) => {
 };
 
 const emailCodigoVerificacion = async ({ email, name, otp }) => {
-    // Looking to send emails in production? Check out our Email API/SMTP product!
     const transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,

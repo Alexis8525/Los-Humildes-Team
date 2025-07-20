@@ -54,21 +54,18 @@ const registrarUsuario = async (req, res) => {
         
         pre.save()
         emailRegistro({ email, name, token:pre._id });
-        return
         
-
-
         respuesta.status = 'success';
-        respuesta.msg = 'Registro completado, enviando token de confirmación';
+        respuesta.msg = 'Registro completado, confirma tu cuenta para activarla';
         respuesta.data = null;
-        res.status(201).json(respuesta);
+        return res.status(201).json(respuesta);
 
     } catch (error) {
         console.log(error);
         respuesta.status = 'error';
         respuesta.msg = 'Error al registrar el usuario';
-        respuesta.data = error;
-        res.status(500).json(respuesta);
+        respuesta.data = error.message;
+        return res.status(500).json(respuesta);
     }
 };
 
