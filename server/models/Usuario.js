@@ -41,14 +41,6 @@ const usuarioSchema = mongoose.Schema(
             default: 'Cliente',
             enum: ['Cliente', '4DMlN']
         },
-        otp: {
-            type: String,
-            default: null
-        },
-        otpExpires: {
-            type: Date,
-            default: null
-        },
         policityAccepted:{
             type:Boolean,
             default:false

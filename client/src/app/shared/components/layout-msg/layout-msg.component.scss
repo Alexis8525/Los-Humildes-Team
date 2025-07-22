@@ -1,0 +1,38 @@
+.capa {
+    width: 100%;
+    background-color: var(--color-fondo-dgr);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.confirm {
+    text-align: center;
+    width: 100%;
+    
+
+    &__btn {
+        margin-top: 2rem;
+        width: 100%;
+        background-color: var(--color-btns);
+        border: none;
+        color: var(--color-blanco);
+        font-weight: 700;
+        padding-block: .8rem;
+        border-radius: .5rem;
+        transition-property: background-color;
+        transition-duration: 300ms;
+        transition-timing-function: ease-in-out;
+    }
+
+    &__btn:hover {
+        background-color: var(--color-fondo);
+    }
+}
+
+@media (min-width:768px) {
+    .confirm{
+        width:30%;
+    }
+}
