@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+/*Vars*/
+:root {
+  --color-fondo: #020724;
+  --color-btns: #d86b22;
+  --color-fondo-dgr: #292e4b;
+  --color-blanco: #ebeef3;
+  --color-rojo-fondo: #fbc8c8;
+  --color-rojo: #f42424;
+  --color-verde-fondo: #d8fdd8;
+  --color-verde: #00ba00;
+}
+
+/* --- Reset y base --- */
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+body {
+  font-size: 1.6rem;
+  font-weight: 300;
+  background-color: var(--color-fondo);
+  color: var(--color-blanco);
+  margin: 0;
+  min-height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*Fin styles globals*/
