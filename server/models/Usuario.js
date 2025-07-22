@@ -32,7 +32,7 @@ const usuarioSchema = mongoose.Schema(
             type: String,
             default:''
         },
-        confirm: {
+        emailConfirm: {
             type: Boolean,
             default: true
         },

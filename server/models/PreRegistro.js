@@ -2,10 +2,11 @@ import mongoose from "mongoose";
 
 const preRegistroSchema = mongoose.Schema(
     {
-        token: {
-            type: String,
-            required: true
-        }
+        name:{type:String},
+        lastN:{type:String},
+        email:{type:String},
+        pass:{type:String},
+        token:{type:String}
     },
     {
         timestamps: true

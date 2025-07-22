@@ -9,6 +9,8 @@ const generarId = () => {
 
 
 //const generarJWT = (datos) => jwt.sign({ id: datos.id, name: datos.name }, process.env.JWT_SECRET, { expiresIn: '1d' });
-const generarJWT = (datos) => jwt.sign(datos, process.env.JWT_SECRET, { expiresIn: '1d' });
+const generarJWT = (datos) => jwt.sign(datos, process.env.JWT_SECRET, { expiresIn: '5h' });
 
-export { generarId, generarJWT };
+const generarCode2fA = () => Math.floor(100000 + Math.random() * 900000).toString();
+
+export { generarId, generarJWT, generarCode2fA };

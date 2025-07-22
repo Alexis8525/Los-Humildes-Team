@@ -73,7 +73,7 @@ const emailOlvidePass = async (datos) => {
 
 };
 
-const emailCodigoVerificacion = async ({ email, name, otp }) => {
+const emailCodigoVerificacion = async ({ email, name, code }) => {
     const transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
         port: process.env.EMAIL_PORT,
@@ -86,11 +86,11 @@ const emailCodigoVerificacion = async ({ email, name, otp }) => {
 
 
     const subject = `Código de Verificación (2FA)`;
-    const text = `Hola ${name}, tu código de verificación es: ${otp}`;
+    const text = `Hola ${name}, tu código de verificación es: ${code}`;
     //const reff = process.env.E_BACKEND_URL;
     const html = `
         <p>Hola <strong>${name}</strong>,</p>
-        <p>Tu código de verificación es: <strong>${otp}</strong></p>
+        <p>Tu código de verificación es: <strong>${code}</strong></p>
         <p>Este código expirará en 5 minutos.</p>
     `;
     //Enviar

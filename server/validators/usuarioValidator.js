@@ -29,3 +29,18 @@ export const validarRegistro = [
     .matches(/[0-9]/).withMessage('Debe contener al menos un número')
     .matches(/[-_!@#$%^&*()+={};:,.<>?~]/).withMessage('Debe contener un carácter especial'),
 ];
+
+export const validarLogin = [
+  // Valida 'email'
+  body('email')
+    .trim()
+    .notEmpty().withMessage('El email es obligatorio')
+    .isEmail().withMessage('Debe ser un email válido')
+    .normalizeEmail(), // Convierte a minúsculas y limpia formato
+    
+  // Valida 'pass' (contraseña)
+  body('pass')
+    .trim()
+    .notEmpty().withMessage('La contraseña es obligatoria')
+    .isLength({ min: 8 }).withMessage('La contraseña debe tener al menos 8 caracteres')
+];
