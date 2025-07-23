@@ -13,7 +13,7 @@ const twoFactorCode = mongoose.Schema(
     }
 );
 
-twoFactorCode.index({})
+twoFactorCode.index({expiresAt:1},{ expireAfterSeconds: 0 })
 
 const TwoFactorCode = mongoose.model("TwoFactorCode", twoFactorCode);
 
