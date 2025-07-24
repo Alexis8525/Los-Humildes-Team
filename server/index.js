@@ -10,6 +10,7 @@ import { sanitizeObject } from './middleware/sanitiza.js';
 //  +++++++++++ Routes +++++++++++++++++
 import usuarioRoutes from './routes/usuarioRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
+import rutinaRoutes from './routes/rutinaRoutes.js';
 
 
 // Esto va a buscar por un archivo .env
@@ -63,6 +64,7 @@ app.use((req, res, next) => {
 app.use('/public/uploads', express.static('public/uploads')); // 'uploads' es la carpeta donde guardas las imágenes
 app.use('/auth', usuarioRoutes);
 app.use('/exercise', exerciseRoutes);
+app.use('/rutina', rutinaRoutes);
 
 // Iniciando el servidor
 app.listen(port, () => {

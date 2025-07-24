@@ -8,7 +8,7 @@ const addExercise = async (req, res) => {
         const { _id: createdBy, role } = req.usuario;
         const { name, muscleGroups, equipmentRequired, difficulty } = req.body;
 
-        const exists = await Exercise.findOne({ name: name.toLowerCase() });
+        const exists = await Exercise.findOne({ name: name.toLowerCase(), createdBy });
 
         if (exists && !exists.isActive) {
             exists.isActive = true;
@@ -19,7 +19,7 @@ const addExercise = async (req, res) => {
             return res.status(200).json(respuesta);
         }
 
-        if (exists && exists.name === name.toLowerCase()) {
+        if (exists && exists.isActive) {
             respuesta.status = 'error';
             respuesta.msg = 'Ya tienes un ejercicio con ese nombre';
             return res.status(400).json(respuesta);
