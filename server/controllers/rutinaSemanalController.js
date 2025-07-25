@@ -341,6 +341,52 @@ const markExercisesCompleted = async (req, res) => {
     }
 }
 
+const weeklySumary = async (req, res) => {
+    let respuesta = new Respuesta();
+    try {
+        const { _id: createdBy } = req.usuario;
+        const { weeklyRoutineId: _id } = req.params;
+
+        const weeklyRoutine = await RutinaSemanal.findOne({ _id, createdBy });
+
+        let sumary = {};
+        if (!weeklyRoutine.rutinas.length > 0) {
+            respuesta.status = 'success';
+            respuesta.msg = 'Resumen de la rutina semanal';
+            respuesta.data = 'No hay rutinas para este plan semanal';
+
+            return res.status(200).json(respuesta);
+        }
+
+        let completed = 0;
+        let porcentaje = 0;
+        weeklyRoutine.rutinas.forEach(r => {
+            if (r.completada) {
+                completed += 1;
+            }
+            porcentaje = (completed * 100) / weeklyRoutine.rutinas.length
+        });
+        sumary = { "totalRoutines": weeklyRoutine.rutinas.length, "routinesCompleted": completed, "completedPorcent": porcentaje };
+        //console.log("Porcentaje de completado: ", porcentaje);
+        //console.log(weeklyRoutine);
+
+        respuesta.status = 'success';
+        respuesta.msg = 'Resumen del plan semanal';
+        respuesta.data = sumary;
+
+        return res.status(200).json(respuesta);
+
+    } catch (error) {
+        console.error(error);
+
+        respuesta.status = 'error';
+        respuesta.msg = 'Error al obtener la rutina semanal';
+        respuesta.data = error.message;
+        return res.status(500).json(respuesta);
+    }
+
+}
+
 export {
     createWeeklyRoutine,
     listWeeklyRoutinesByUser,
@@ -348,5 +394,6 @@ export {
     updateWeeklyRoutine,
     deleteWeeklyRoutine,
     markDayAsCompleted,
-    markExercisesCompleted
+    markExercisesCompleted,
+    weeklySumary
 }

@@ -8,7 +8,8 @@ import {
     listWeeklyRoutinesByUser,
     markDayAsCompleted,
     markExercisesCompleted,
-    updateWeeklyRoutine
+    updateWeeklyRoutine,
+    weeklySumary
 } from "../controllers/rutinaSemanalController.js";
 
 const router = express.Router();
@@ -20,6 +21,7 @@ router.patch("/edit/:id",checkAuth,updateWeeklyRoutine);
 router.delete("/delete/:id",checkAuth,deleteWeeklyRoutine);
 router.patch("/completed/:weeklyRoutineId",checkAuth,markDayAsCompleted);
 router.patch("/exer-completed/:weeklyRoutineId",checkAuth,markExercisesCompleted);
+router.get("/:weeklyRoutineId/sumary",checkAuth,weeklySumary);
 
 
 export default router;
