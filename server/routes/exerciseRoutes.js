@@ -19,8 +19,8 @@ router.get("/", checkAuth, listExcercisesByUserAndSystem);
 router.get("/by-user", checkAuth, listExcercisesByUser);
 router.get("/by-system", listExcercisesBySystem);
 router.get("/all", checkAuth, checkRole ,listAllExcercises);
-router.patch("/edit", checkAuth, editExcercise);
-router.delete("/delete",checkAuth, deleteExercise)
+router.patch("/edit/:id", checkAuth, editExcercise);
+router.delete("/delete/:id",checkAuth, deleteExercise)
 
 
 export default router;

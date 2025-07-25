@@ -11,6 +11,7 @@ import { sanitizeObject } from './middleware/sanitiza.js';
 import usuarioRoutes from './routes/usuarioRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
 import rutinaRoutes from './routes/rutinaRoutes.js';
+import rutinaSemanalRoutes from './routes/rutinaSemanalRoutes.js';
 
 
 // Esto va a buscar por un archivo .env
@@ -65,6 +66,7 @@ app.use('/public/uploads', express.static('public/uploads')); // 'uploads' es la
 app.use('/auth', usuarioRoutes);
 app.use('/exercise', exerciseRoutes);
 app.use('/rutina', rutinaRoutes);
+app.use('/rutina-semanal', rutinaSemanalRoutes);
 
 // Iniciando el servidor
 app.listen(port, () => {

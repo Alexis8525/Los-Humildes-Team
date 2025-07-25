@@ -19,14 +19,7 @@ const createRoutine = async (req, res) => {
             return res.status(400).json(respuesta);
         }
 
-        if (existsRoutine && !existsRoutine.isActive) {
-            existsRoutine.isActive = true;
-            await existsRoutine.save();
-            respuesta.status = 'success';
-            respuesta.msg = 'Rutina reestablecida';
-            respuesta.data = existsRoutine;
-            return res.status(200).json(respuesta);
-        }
+        
 
         const nwRoutine = new Rutina({
             name: name.toLowerCase(),
@@ -58,7 +51,7 @@ const listRoutinesByUser = async (req, res) => {
     let respuesta = new Respuesta();
     try {
         const { _id: createdBy } = req.usuario;
-        const routines = await Rutina.find({ createdBy, isActive:true }).populate({ path: 'exercises.exerciseId', model: Exercise, select: '-createdBy -createdAt -updatedAt -__v -visibility -isActive' });
+        const routines = await Rutina.find({ createdBy, isActive: true }).populate({ path: 'exercises.exerciseId', model: Exercise, select: '-createdBy -createdAt -updatedAt -__v -visibility -isActive' });
 
         respuesta.status = 'success';
         respuesta.msg = 'Todas tus rutinas';
@@ -81,9 +74,10 @@ const editRoutineByUser = async (req, res) => {
     let respuesta = new Respuesta();
     try {
         const { _id: createdBy } = req.usuario;
-        const { id } = req.body;
+        const { id } = req.params;
+        const { name } = req.body;
 
-        const routine = await Rutina.findOne({ _id: id, createdBy, isActive:true }).populate({ path: 'exercises.exerciseId', model: Exercise, select: '-createdBy -createdAt -updatedAt -__v -visibility -isActive' });
+        const routine = await Rutina.findOne({ _id: id, createdBy, isActive: true }).populate({ path: 'exercises.exerciseId', model: Exercise, select: '-createdBy -createdAt -updatedAt -__v -visibility -isActive' });
 
         if (!routine) {
             respuesta.status = 'error';
@@ -93,7 +87,18 @@ const editRoutineByUser = async (req, res) => {
 
         console.log(routine);
 
-        routine.name = req.body.name || routine.name;
+        if (name && name.toLowerCase() != routine.name) {
+            const nameExists = await Rutina.findOne({ name: name.toLowerCase(), createdBy, isActive: true });
+
+            if (nameExists) {
+                respuesta.status = 'error';
+                respuesta.msg = 'Ya tienes una rutina con ese nombre';
+                return res.status(409).json(respuesta);
+            }
+
+        }
+
+        routine.name = req.body.name ? req.body.name.toLowerCase() : routine.name;
         routine.descrip = req.body.descrip || routine.descrip;
         routine.exercises = req.body.exercises || routine.exercises;
 
@@ -121,11 +126,11 @@ const deleteRoutineByUser = async (req, res) => {
     let respuesta = new Respuesta();
     try {
         const { _id: createdBy } = req.usuario;
-        const { id } = req.body;
+        const { id } = req.params;
 
         const routine = await Rutina.findOne({ _id: id, createdBy });
 
-        if(!routine){
+        if (!routine) {
             respuesta.status = 'error';
             respuesta.msg = 'No se encontro la rutina';
             return res.status(404).json(respuesta);

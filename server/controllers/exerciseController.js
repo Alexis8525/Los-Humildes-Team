@@ -10,15 +10,6 @@ const addExercise = async (req, res) => {
 
         const exists = await Exercise.findOne({ name: name.toLowerCase(), createdBy });
 
-        if (exists && !exists.isActive) {
-            exists.isActive = true;
-            await exists.save();
-            respuesta.status = 'success';
-            respuesta.msg = 'Ejercicio reestablecido';
-            respuesta.data = exists;
-            return res.status(200).json(respuesta);
-        }
-
         if (exists && exists.isActive) {
             respuesta.status = 'error';
             respuesta.msg = 'Ya tienes un ejercicio con ese nombre';
@@ -85,7 +76,7 @@ const listExcercisesByUser = async (req, res) => {
 
     try {
         const { _id: createdBy } = req.usuario;
-        const exercises = await Exercise.find({ createdBy, isActive:true });
+        const exercises = await Exercise.find({ createdBy, isActive: true });
         //console.log(exercises);
         respuesta.status = 'success';
         respuesta.msg = 'Ejercicios creados por el usuario';
@@ -106,7 +97,7 @@ const listExcercisesBySystem = async (req, res) => {
     let respuesta = new Respuesta();
 
     try {
-        const exercises = await Exercise.find({ visibility: 'system', isActive:true });
+        const exercises = await Exercise.find({ visibility: 'system', isActive: true });
         //console.log(exercises);
         respuesta.status = 'success';
         respuesta.msg = 'Ejercicios del sistema';
@@ -149,8 +140,9 @@ const editExcercise = async (req, res) => {
     let respuesta = new Respuesta();
 
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const { _id } = req.usuario;
+        const { name } = req.body;
         const exercise = await Exercise.findOne({ _id: id });
 
         if (!exercise) {
@@ -167,7 +159,21 @@ const editExcercise = async (req, res) => {
 
         console.log(exercise)
 
-        exercise.name = req.body.name || exercise.name;
+        if (name && name.toLowerCase() != exercise.name) {
+            const nameExists = await Exercise.findOne({
+                name: name.toLowerCase(),
+                createdBy:_id,
+                isActive: true
+            });
+
+            if (nameExists) {
+                respuesta.status = 'error';
+                respuesta.msg = 'Ya tienes un ejercicio con ese nombre';
+                return res.status(409).json(respuesta);
+            }
+        }
+
+        exercise.name = req.body.name ? req.body.name.toLowerCase() : exercise.name;
         exercise.muscleGroups = req.body.muscleGroups || exercise.muscleGroups;
         exercise.equipmentRequired = req.body.equipmentRequired || exercise.equipmentRequired;
         exercise.difficulty = req.body.difficulty || exercise.difficulty;
@@ -189,10 +195,10 @@ const editExcercise = async (req, res) => {
     }
 }
 
-const deleteExercise = async (req,res) => {
+const deleteExercise = async (req, res) => {
     let respuesta = new Respuesta();
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const { _id } = req.usuario;
         const exercise = await Exercise.findOne({ _id: id });
 
