@@ -5,15 +5,16 @@ import { Respuesta } from '../../interfaces/respuesta.interface';
 import { catchError, of, tap } from 'rxjs';
 
 @Component({
-  selector: 'app-confirm-account',
-  templateUrl: './confirm-account.component.html',
-  styleUrl: './confirm-account.component.scss'
+  selector: 'app-confirm-tkn-nwpass',
+  templateUrl: './confirm-tkn-nwpass.component.html',
+  styleUrl: './confirm-tkn-nwpass.component.scss'
 })
-export class ConfirmAccountComponent implements OnInit {
+export class ConfirmTknNwpassComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private token = '';
   private shredService = inject(SharedService);
-  public respuesta = signal<Respuesta>({status:'error',msg:'',data:undefined});
+  public respuesta = signal<Respuesta>({ status: 'error', msg: '', data: undefined });
+  public infoBtn = {url:'',title:''};
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -21,15 +22,17 @@ export class ConfirmAccountComponent implements OnInit {
       this.token = params.get('token') || '';
 
       if (this.token != '') {
-        this.shredService.confirmarCuenta(this.token).pipe(
+        this.shredService.confirmarTokenNewPass(this.token).pipe(
           tap({
-            next:(resp:Respuesta)=>{
+            next: (resp: Respuesta) => {
               console.log(resp.status);
               this.respuesta.set(resp);
+              this.infoBtn = { url: '/', title: 'Cambiar Password' };
             },
           }),
-          catchError((err)=>{
+          catchError((err) => {
             console.log(err);
+            this.infoBtn = { url: '/', title: 'Inicio' };
             this.respuesta.set(err.error);
             return of(null)
           })
@@ -37,6 +40,4 @@ export class ConfirmAccountComponent implements OnInit {
       }
     })
   }
-
-
 }
