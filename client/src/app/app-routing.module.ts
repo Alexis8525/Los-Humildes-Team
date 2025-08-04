@@ -6,6 +6,10 @@ import { RegisterComponent } from './auth/register/register.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  {
+    path:'shared',
+    loadChildren: () => import('./shared/shared.module').then(m=>m.SharedModule)
+  }
 ];
 
 @NgModule({
