@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6
+    container_name: tuxfitness_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: tuxfitness_server
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=mongodb
+      - DB_PORT=27017
+      - DB_USER=root
+      - DB_PASS=example
+    depends_on:
+      - mongodb
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: tuxfitness_client
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+
+volumes:
+  mongodb_data:
+  
