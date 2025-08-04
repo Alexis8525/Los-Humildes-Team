@@ -20,8 +20,8 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule, 
-    RouterModule 
-    SharedModule
+    RouterModule,
+    SharedModule,
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
