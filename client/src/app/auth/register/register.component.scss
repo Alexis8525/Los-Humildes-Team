@@ -1,0 +1,133 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+  padding: 2rem;
+
+  .register-card {
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    animation: fadeIn 0.3s ease-in-out;
+
+    .register-title {
+      color: #3f51b5;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .form-label {
+        font-weight: 500;
+        color: #333;
+        font-size: 0.95rem;
+      }
+
+      .form-input {
+        padding: 0.85rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: #3f51b5;
+          box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+        }
+
+        &::placeholder {
+          color: #aaa;
+        }
+      }
+
+      .password-input-container {
+        position: relative;
+
+        .visibility-toggle {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.2rem;
+          color: #666;
+          padding: 0.5rem;
+        }
+      }
+
+      .error-message {
+        color: #f44336;
+        font-size: 0.8rem;
+        margin-top: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 1rem;
+
+      &:hover {
+        background-color: #303f9f;
+      }
+
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .login-redirect {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #666;
+      font-size: 0.95rem;
+
+      .login-link {
+        color: #3f51b5;
+        font-weight: 500;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
