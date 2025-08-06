@@ -1,8 +1,10 @@
+
+<app-navbar></app-navbar>
+
 <div class="register-container">
   <div class="register-card">
     <h2 class="register-title">Crea tu cuenta</h2>
     
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
       <!-- Campo Nombre -->
       <div class="form-group">
         <label for="name" class="form-label">Nombre completo</label>
@@ -104,6 +106,5 @@
         ¿Ya tienes cuenta? 
         <a routerLink="/login" class="login-link">Inicia sesión</a>
       </div>
-    </form>
   </div>
 </div>

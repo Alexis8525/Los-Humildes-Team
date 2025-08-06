@@ -1,7 +1,8 @@
+<app-navbar></app-navbar>
+
 <div class="login-container">
   <h2>Iniciar Sesión</h2>
   
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <!-- Campo Email -->
     <div class="form-group">
       <label for="email">Email:</label>
@@ -52,5 +53,4 @@
     <p class="register-link">
       ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
     </p>
-  </form>
 </div>

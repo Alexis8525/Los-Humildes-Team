@@ -1,14 +1,25 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { 
   FormBuilder, 
   FormGroup, 
+  FormsModule, 
+  ReactiveFormsModule, 
   Validators
 } from '@angular/forms';
+import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NavbarComponent
+  ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'] // o .css si prefieres
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   loginForm: FormGroup;
