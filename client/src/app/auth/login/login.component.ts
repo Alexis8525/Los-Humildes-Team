@@ -1,3 +1,4 @@
+// login.component.ts
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { 
@@ -7,6 +8,7 @@ import {
   ReactiveFormsModule, 
   Validators
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component';
 
 @Component({
@@ -23,18 +25,28 @@ import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component'
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  passwordVisible = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       console.log('Formulario válido:', this.loginForm.value);
-      // Aquí iría la lógica para enviar datos al backend
+      // Aquí iría la lógica para autenticar al usuario
+      // Ejemplo: this.authService.login(this.loginForm.value);
+      this.router.navigate(['/dashboard']);
     }
   }
 }

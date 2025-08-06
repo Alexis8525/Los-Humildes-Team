@@ -1,60 +1,370 @@
+
 <app-navbar></app-navbar>
-  
-  <!-- Contenido Principal -->
-  <main class="bg-slate-800 text-white">
-    <!-- Sección de Bienvenida (Hero) -->
-    <header class="relative text-center py-24 px-6 bg-cover bg-center bg-fixed" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop');">
-      <div class="absolute inset-0 bg-black bg-opacity-60 backdrop-blur-sm"></div>
-      <div class="relative z-10">
-        <h1 class="text-5xl md:text-6xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-400 animate-fade-in-down">Transforma tu Físico con TuxFitness</h1>
-        <p class="text-xl mb-8 text-slate-200 max-w-3xl mx-auto animate-fade-in-up animation-delay-300">Crea, gestiona y sigue tus rutinas de entrenamiento semanales de forma sencilla y efectiva.</p>
-        <a routerLink="/register" class="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-10 rounded-full text-lg shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-blue-400/50 animate-bounce">
-          ¡Comienza Ahora!
-        </a>
-      </div>
-    </header>
-  
-    <!-- Sección de Características -->
-    <section id="features" class="py-20">
-      <div class="container mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">¿Qué te ofrece TuxFitness?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <!-- Tarjeta 1: Rutinas Personalizadas -->
-          <div class="bg-slate-900/50 backdrop-blur-lg rounded-2xl p-8 text-center shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:shadow-cyan-500/20 border border-transparent hover:border-cyan-500">
-            <div class="text-cyan-400 mb-5">
-              <i class="fas fa-calendar-alt fa-3x transition-transform duration-300 transform group-hover:scale-110"></i>
-            </div>
-            <h3 class="text-2xl font-bold mb-3 text-white">Rutinas Semanales</h3>
-            <p class="text-slate-400">Organiza tu entrenamiento día por día. Planifica tus ejercicios, series y repeticiones para toda la semana.</p>
-          </div>
-  
-          <!-- Tarjeta 2: Biblioteca de Ejercicios -->
-          <div class="bg-slate-900/50 backdrop-blur-lg rounded-2xl p-8 text-center shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:shadow-cyan-500/20 border border-transparent hover:border-cyan-500" style="animation-delay: 200ms;">
-            <div class="text-cyan-400 mb-5">
-              <i class="fas fa-book-open fa-3x transition-transform duration-300 transform group-hover:scale-110"></i>
-            </div>
-            <h3 class="text-2xl font-bold mb-3 text-white">Amplia Biblioteca</h3>
-            <p class="text-slate-400">Accede a una gran variedad de ejercicios con descripciones detalladas para asegurar la técnica correcta.</p>
-          </div>
-  
-          <!-- Tarjeta 3: Seguimiento de Progreso -->
-          <div class="bg-slate-900/50 backdrop-blur-lg rounded-2xl p-8 text-center shadow-2xl transition-all duration-500 transform hover:-translate-y-3 hover:shadow-cyan-500/20 border border-transparent hover:border-cyan-500" style="animation-delay: 400ms;">
-            <div class="text-cyan-400 mb-5">
-              <i class="fas fa-chart-line fa-3x transition-transform duration-300 transform group-hover:scale-110"></i>
-            </div>
-            <h3 class="text-2xl font-bold mb-3 text-white">Sigue tu Progreso</h3>
-            <p class="text-slate-400">Visualiza tu avance a lo largo del tiempo y mantén la motivación para alcanzar tus metas.</p>
-          </div>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuxFitness - Transforma tu cuerpo en casa</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .navbar {
+            background-color: #001f3f;
+        }
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #00b4db, #0083b0);
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(to right, #0083b0, #00b4db);
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+    
+    <!-- Hero Section -->
+    <section class="hero-bg relative py-32 text-center text-white">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+                No necesitas un gimnasio para ponerte en tu mejor forma.
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-fade-in delay-100">
+                En solo 30 días, ganarás fuerza, quemarás grasa y entrenarás más duro que nunca... sin salir de casa.
+            </p>
         </div>
-      </div>
     </section>
-  </main>
-  
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-8">
-    <div class="container mx-auto px-6 text-center">
-      <p>&copy; 2025 TuxFitness. Todos los derechos reservados.</p>
-      <p class="text-sm mt-2">Diseñado para llevar tu entrenamiento al siguiente nivel.</p>
-    </div>
-  </footer>
+
+    <!-- Programa Destacado -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 animate-fade-in">
+                    <span class="text-blue-600">Proyecto 30:</span> Tu renacer
+                </h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto animate-fade-in delay-100">
+                    Este no es un reto cualquiera, es un renacer físico y mental. Durante 30 días, harás entrenamientos de 50 minutos al día, cada vez más intensos.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-10 animate-fade-in delay-200">
+                <div class="md:w-1/2">
+                    <p class="text-gray-700 mb-6">
+                        Si crees que entrenar en casa es fácil, prepárate para cambiar de opinión.
+                    </p>
+                    <p class="text-gray-700 mb-6">
+                        No importa si ya entrenabas o si vienes de cero, este programa está diseñado para llevarte al límite y hacerte más fuerte que nunca.
+                    </p>
+                    <p class="text-gray-500 italic">
+                        *Acceso por 2 meses
+                    </p>
+                </div>
+                
+                <div class="md:w-1/2 bg-gray-50 p-8 rounded-xl shadow-lg border border-gray-200">
+                    <div class="mb-6">
+                        <span class="line-through text-gray-500 text-xl">$997mx</span>
+                        <span class="text-3xl font-bold text-blue-600 ml-4">$797mx</span>
+                    </div>
+                    <p class="text-gray-600 mb-8">
+                        $48.55 38.81 USD (Dependiendo del cambio del día)
+                    </p>
+                    <button class="btn-gradient text-white font-bold py-4 px-8 rounded-lg w-full hover:shadow-lg transition-all">
+                        Consigue el PROYECTO 30
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                ¿Qué incluye el PROYECTO 30?
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-blue-500 text-2xl mb-4">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Acceso inmediato</h3>
+                    <p class="text-gray-600">
+                        Acceso inmediato a todos los videos al momento de la compra.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-blue-500 text-2xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Entrenamientos completos</h3>
+                    <p class="text-gray-600">
+                        Entrenamientos de 1 hora, diseñados para desafiarte todos los días.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-blue-500 text-2xl mb-4">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sin equipo necesario</h3>
+                    <p class="text-gray-600">
+                        Rutinas sin equipo, pero igual de efectivas que en el gym.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-blue-500 text-2xl mb-4">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">2 meses de acceso</h3>
+                    <p class="text-gray-600">
+                        2 meses de acceso para que completes el programa a tu ritmo.
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                    <div class="text-blue-500 text-2xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Transformación completa</h3>
+                    <p class="text-gray-600">
+                        Transformación física y mental: ganarás fuerza, resistencia y disciplina.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                ¿Cómo funciona?
+            </h2>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex-1 text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Compra ahora</h3>
+                    <p class="text-gray-600">
+                        Compra ahora y recibe acceso inmediato.
+                    </p>
+                </div>
+                
+                <div class="flex-1 text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Accede a los videos</h3>
+                    <p class="text-gray-600">
+                        Ingresa a la plataforma y accede a todos los entrenamientos.
+                    </p>
+                </div>
+                
+                <div class="flex-1 text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sigue el programa</h3>
+                    <p class="text-gray-600">
+                        Sigue el programa durante 30 días y desafía tus límites.
+                    </p>
+                </div>
+                
+                <div class="flex-1 text-center">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mira los resultados</h3>
+                    <p class="text-gray-600">
+                        Mira los resultados en tu cuerpo y mente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para quién es -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">
+                ¿Para quién es este programa?
+            </h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <ul class="grid md:grid-cols-3 gap-6">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle mt-1 mr-3 text-blue-200"></i>
+                        <span>Para quienes quieren entrenar sin necesidad de un gimnasio.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle mt-1 mr-3 text-blue-200"></i>
+                        <span>Para quienes buscan un desafío real que los haga más fuertes.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle mt-1 mr-3 text-blue-200"></i>
+                        <span>Para quienes están cansados de excusas y listos para comprometerse.</span>
+                    </li>
+                </ul>
+                
+                <div class="text-center mt-16">
+                    <h3 class="text-2xl font-bold mb-6">¡Empieza hoy!</h3>
+                    <p class="text-xl mb-8">
+                        No esperes más. Empieza tu transformación ahora.
+                    </p>
+                    <button class="bg-white text-blue-600 font-bold py-3 px-10 rounded-lg hover:bg-gray-100 transition-all">
+                        Consigue el PROYECTO 30
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                Testimonios
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">Carlos M.</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Increíble programa. En solo 30 días noté cambios que no logré en meses de gimnasio."
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">Ana G.</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Los entrenamientos son intensos pero adaptables. Perfecto para hacer en casa con poco espacio."
+                    </p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h4 class="font-semibold">Luis P.</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "La mejor inversión en mi salud. Ahora tengo más energía y me siento más fuerte que nunca."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="/assets/tuxfitnes.png" alt="TuxFitness" class="h-12 mb-4">
+                    <p class="text-sm">
+                        Transforma tu cuerpo y mente con nuestros programas de entrenamiento en casa.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Links de Interés</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Términos de servicio</a></li>
+                        <li><a href="#" class="hover:text-white">Políticas de privacidad</a></li>
+                        <li><a href="#" class="hover:text-white">Información de envíos</a></li>
+                        <li><a href="#" class="hover:text-white">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Ayuda</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">¿Problemas al descargar el manual?</a></li>
+                        <li><a href="#" class="hover:text-white">Contacto técnico</a></li>
+                        <li><a href="#" class="hover:text-white">Métodos de pago</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <p class="text-xs mt-6">
+                        Desarrollado por TuxFitness Team
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2023 TuxFitness. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
   

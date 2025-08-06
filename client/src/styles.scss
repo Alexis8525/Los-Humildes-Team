@@ -1,5 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-/*Vars*/
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tus estilos personalizados */
 :root {
   --color-fondo: #020724;
   --color-btns: #d86b22;
@@ -11,7 +15,6 @@
   --color-verde: #00ba00;
 }
 
-/* --- Reset y base --- */
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -33,5 +36,3 @@ body {
   min-height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-/*Fin styles globals*/
