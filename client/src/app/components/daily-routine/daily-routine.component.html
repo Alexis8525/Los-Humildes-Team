@@ -1,0 +1,54 @@
+<div class="routine-form" [class.is-loading]="isLoading">
+  <!-- Mensaje de error -->
+  <div *ngIf="errorMessage" class="error-message">
+    <mat-icon>error_outline</mat-icon>
+    {{ errorMessage }}
+  </div>
+
+  <!-- Spinner de carga -->
+  <div *ngIf="isLoading" class="loading-overlay">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Guardando rutina...</p>
+  </div>
+
+  <h2>Crear Rutina Diaria</h2>
+  
+  <div class="form-group">
+    <label>Nombre de la Rutina</label>
+    <input type="text" [(ngModel)]="routine.name" placeholder="Ej: Rutina de piernas" [disabled]="isLoading">
+  </div>
+
+  <div class="form-group">
+    <label>Descripción (Opcional)</label>
+    <textarea [(ngModel)]="routine.descrip" placeholder="Descripción de la rutina" [disabled]="isLoading"></textarea>
+  </div>
+
+  <h3>Ejercicios Disponibles</h3>
+  <div class="exercise-grid">
+    <div *ngFor="let exercise of exercises" 
+         class="exercise-card" 
+         (click)="!isLoading && addExercise(exercise)"
+         [class.disabled]="isLoading">
+      <h4>{{ exercise.name }}</h4>
+      <p>{{ exercise.muscleGroups.join(', ') }}</p>
+    </div>
+  </div>
+
+  <h3>Ejercicios Seleccionados</h3>
+  <div *ngFor="let exercise of selectedExercises; let i = index" class="selected-exercise">
+    <div>
+      <strong>{{ getExerciseName(exercise.exerciseId) }}</strong>
+      <span>Series: {{ exercise.series }}</span>
+      <span>Reps: {{ exercise.repeticiones }}</span>
+      <span>Descanso: {{ exercise.descanso }}</span>
+    </div>
+    <button (click)="!isLoading && removeExercise(i)" [disabled]="isLoading">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  <button (click)="createRoutine()" [disabled]="isLoading || !routine.name || selectedExercises.length === 0">
+    <span *ngIf="!isLoading">Crear Rutina</span>
+    <span *ngIf="isLoading">Procesando...</span>
+  </button>
+</div>

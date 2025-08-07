@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { 
   FormBuilder, 
   FormGroup, 
-  Validators
+  Validators,
 } from '@angular/forms';
 
 @Component({
