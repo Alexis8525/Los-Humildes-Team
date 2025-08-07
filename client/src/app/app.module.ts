@@ -26,12 +26,6 @@ import { DatePipe } from '@angular/common';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { ExerciseListComponent } from './components/excercise-list/excercise-list.component'; // Asegúrate de que el nombre del componente sea correcto
-import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
-import { AppRoutingModule } from './app-routing.module';
-
-// Registra el idioma español
-registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -51,24 +45,10 @@ registerLocaleData(localeEs);
     
     // App Routing
     AppRoutingModule,
-    
-    // Angular Material Modules (agrupados)
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatListModule,
-    MatProgressSpinnerModule,
-    MatDatepickerModule
+    ReactiveFormsModule, 
+    RouterModule 
   ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'es' }, // Configuración de localización
-    DatePipe,
-    // No es necesario proveer servicios aquí si usas providedIn: 'root'
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

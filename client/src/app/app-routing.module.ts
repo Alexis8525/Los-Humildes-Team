@@ -15,7 +15,7 @@ const routes: Routes = [
     path: '', 
     redirectTo: '/daily-routine', 
     pathMatch: 'full' 
-  }
+  },
 ];
 
 @NgModule({
