@@ -1,0 +1,121 @@
+/*
+  Estilos personalizados y animaciones para HomeComponent
+  Estos estilos complementan las clases de Tailwind CSS usadas en el HTML.
+*/
+
+:host {
+    display: block;
+  
+    /* 🎯 Animaciones personalizadas */
+    @keyframes fade-in-down {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    @keyframes pulse-soft {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+      }
+    }
+  
+    /* ✅ Clases para animaciones */
+    .animate-fade-in-down {
+      animation: fade-in-down 0.9s ease-out forwards;
+    }
+  
+    .animate-fade-in-up {
+      animation: fade-in-up 0.9s ease-out forwards;
+    }
+  
+    .animation-delay-300 {
+      animation-delay: 300ms;
+    }
+  
+    /* ✅ Animación de pulso para íconos */
+    .animate-pulse-soft {
+      animation: pulse-soft 2s infinite ease-in-out;
+    }
+  
+    /* ✅ Tarjetas de características */
+    .feature-card {
+      transition: all 0.4s ease;
+      border: 1px solid transparent;
+      backdrop-filter: blur(12px);
+  
+      &:hover {
+        transform: translateY(-6px) scale(1.02);
+        border-color: rgba(6, 182, 212, 0.6); // cyan-500
+        box-shadow: 0 8px 25px rgba(6, 182, 212, 0.25);
+      }
+  
+      i {
+        transition: transform 0.3s ease;
+      }
+  
+      &:hover i {
+        transform: scale(1.15) rotate(-3deg);
+      }
+    }
+  
+    /* ✅ Botones con efecto glow */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+  
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: all 0.6s ease;
+      }
+  
+      &:hover::after {
+        left: 100%;
+      }
+    }
+  
+    /* ✅ Efecto del Hero Section */
+    header[style] {
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+    }
+  
+    /* ✅ Ajustes de enlaces navbar */
+    nav a {
+      transition: all 0.3s ease-in-out;
+    }
+  
+    nav a:hover {
+      text-shadow: 0 0 10px rgba(34, 211, 238, 0.7); // cyan glow
+    }
+  }
+  

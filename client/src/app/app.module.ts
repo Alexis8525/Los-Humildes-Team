@@ -13,13 +13,10 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule, 
     RouterModule,
     SharedModule,
   ],
