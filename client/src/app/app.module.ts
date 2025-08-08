@@ -30,6 +30,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ExerciseListComponent } from './components/excercise-list/excercise-list.component'; // Asegúrate de que el nombre del componente sea correcto
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
 import { AppRoutingModule } from './app-routing.module';
+import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -42,7 +43,7 @@ registerLocaleData(localeEs);
     LoginComponent,
     RegisterComponent,
     ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
-    DailyRoutineComponent,
+    DailyRoutineComponent, WeeklyRoutineComponent,
   ],
   imports: [
     // Angular Modules

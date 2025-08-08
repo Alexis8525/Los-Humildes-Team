@@ -1,0 +1,282 @@
+/* weekly-routine.component.scss */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+$primary-color: #1976D2;         // Azul primario
+$secondary-color: #0D47A1;       // Azul oscuro
+$accent-color: #64B5F6;          // Azul claro
+$metallic-blue: #4682B4;         // Azul acero
+$light-bg: #E3F2FD;              // Fondo claro
+$text-color: #212121;            // Texto principal
+$text-light: #ECEFF1;            // Texto claro
+
+.weekly-routine-form {
+  font-family: 'Roboto', sans-serif;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(225,245,254,0.95) 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(25, 118, 210, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  h2, h3, h4 {
+    color: $secondary-color;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, $metallic-blue, $accent-color);
+      border-radius: 3px;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    border-bottom: 2px solid rgba($metallic-blue, 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: $secondary-color;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba($metallic-blue, 0.3);
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+      font-family: 'Roboto', sans-serif;
+
+      &:focus {
+        outline: none;
+        border-color: $accent-color;
+        box-shadow: 0 0 0 3px rgba($accent-color, 0.2);
+      }
+
+      &::placeholder {
+        color: rgba($metallic-blue, 0.5);
+      }
+    }
+  }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .day-card {
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(232, 244, 253, 0.95) 100%);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba($metallic-blue, 0.1);
+    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.08);
+    font-weight: 500;
+    color: $metallic-blue;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(25, 118, 210, 0.15);
+      color: $primary-color;
+    }
+
+    &.selected {
+      background: linear-gradient(145deg, $primary-color 0%, $secondary-color 100%);
+      color: white;
+      border-color: $primary-color;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.3);
+    }
+  }
+
+  .exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .exercise-card {
+    padding: 1.25rem;
+    background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(232, 244, 253, 0.95) 100%);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border: 1px solid rgba($metallic-blue, 0.1);
+    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.08);
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(25, 118, 210, 0.15);
+      border-color: rgba($accent-color, 0.3);
+      background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(220, 240, 255, 1) 100%);
+    }
+
+    h4 {
+      color: $primary-color;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      border: none;
+      padding: 0;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+
+    p {
+      color: $metallic-blue;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+  }
+
+  .selected-exercise {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(232, 244, 253, 0.95) 100%);
+    border-radius: 8px;
+    border-left: 4px solid $primary-color;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.1);
+
+    div {
+      flex-grow: 1;
+
+      strong {
+        display: block;
+        color: $secondary-color;
+        margin-bottom: 0.25rem;
+      }
+
+      span {
+        display: inline-block;
+        margin-right: 1rem;
+        font-size: 0.85rem;
+        color: $metallic-blue;
+        background: rgba($accent-color, 0.1);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    background: linear-gradient(90deg, $primary-color 0%, $secondary-color 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(25, 118, 210, 0.2);
+
+    &:hover:not([disabled]) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(25, 118, 210, 0.3);
+    }
+
+    &:active:not([disabled]) {
+      transform: translateY(0);
+    }
+
+    &[disabled] {
+      background: #B0BEC5;
+      cursor: not-allowed;
+      opacity: 0.7;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  /* Botón de Guardar Día */
+  button:not([disabled]):first-of-type {
+    background: linear-gradient(90deg, $metallic-blue 0%, darken($metallic-blue, 10%) 100%);
+    margin-top: 1.5rem;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Estados de carga y error (similar al daily-routine) */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  p {
+    margin-top: 1rem;
+    color: $primary-color;
+    font-weight: 500;
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #FFEBEE;
+  color: #D32F2F;
+  border-radius: 8px;
+  border-left: 4px solid #D32F2F;
+  animation: fadeIn 0.3s ease-out;
+
+  mat-icon {
+    margin-right: 0.5rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
