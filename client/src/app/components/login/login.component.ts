@@ -11,7 +11,7 @@ import {
 
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component';
+import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
 
 @Component({
   selector: 'app-login',

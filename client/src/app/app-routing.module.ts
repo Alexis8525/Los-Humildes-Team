@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
 import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
 
-import { HomeComponent } from './pagina_principal/home/home.component';
-import { NavbarComponent } from './pagina_principal/navbar/navbar.component';
+import { HomeComponent } from './components/pagina_principal/home/home.component';
+import { NavbarComponent } from './components/pagina_principal/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
 
