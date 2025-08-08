@@ -9,6 +9,7 @@ import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routi
 import { HomeComponent } from './pagina_principal/home/home.component';
 import { NavbarComponent } from './pagina_principal/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,8 @@ const routes: Routes = [
     pathMatch: 'full' 
   },
   { path: 'weekly-routine', component: WeeklyRoutineComponent },
+  { path: 'progress', component: ProgressTrackerComponent },
+  { path: '', redirectTo: '/progress', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -29,6 +29,7 @@ import { ExerciseListComponent } from './components/excercise-list/excercise-lis
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
+import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -40,7 +41,7 @@ registerLocaleData(localeEs);
     AppComponent,
     ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
     DailyRoutineComponent, 
-    WeeklyRoutineComponent
+    WeeklyRoutineComponent, ProgressTrackerComponent
   ],
   imports: [
     // Angular Modules
