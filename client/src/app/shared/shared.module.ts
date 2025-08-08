@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PruebaComponent } from '../components/prueba/prueba.component';
-import { ConfirmAccountComponent } from '../components/confirm-account/confirm-account.component';
+import { PruebaComponent } from './prueba/prueba.component';
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { SharedRoutingModule } from './shared-routing.module';
 import { LayoutSharedPageComponent } from '../pages/layout-shared-page/layout-shared-page.component';
 import { RouterOutlet } from '@angular/router';
-import { LayoutMsgComponent } from '../components/layout-msg/layout-msg.component';
-import { ConfirmTknNwpassComponent } from '../components/confirm-tkn-nwpass/confirm-tkn-nwpass.component';
+import { LayoutMsgComponent } from './layout-msg/layout-msg.component';
+import { ConfirmTknNwpassComponent } from './confirm-tkn-nwpass/confirm-tkn-nwpass.component';
+import { Code2fComponent } from './code2f/code2f.component';
+import { NavbarComponent } from '../components/pagina_principal/navbar/navbar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AccountCreatedComponent } from './account-created/account-created.component';
 
 
 
@@ -16,15 +20,20 @@ import { ConfirmTknNwpassComponent } from '../components/confirm-tkn-nwpass/conf
     ConfirmAccountComponent,
     LayoutSharedPageComponent,
     LayoutMsgComponent,
-    ConfirmTknNwpassComponent
+    ConfirmTknNwpassComponent,
+    Code2fComponent,
+    AccountCreatedComponent,
   ],
   imports: [
     CommonModule,
     SharedRoutingModule,
-    RouterOutlet
+    RouterOutlet,
+    NavbarComponent,
+    ReactiveFormsModule
   ],
   exports:[
-    PruebaComponent
+    PruebaComponent,
+    Code2fComponent
   ]
 })
 export class SharedModule { }

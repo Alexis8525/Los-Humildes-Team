@@ -18,7 +18,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Localización
 import { LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { DecimalPipe, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { DatePipe } from '@angular/common';
 
@@ -30,6 +30,7 @@ import { DailyRoutineComponent } from './components/daily-routine/daily-routine.
 import { AppRoutingModule } from './app-routing.module';
 import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
 import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
+import { Code2fComponent } from './shared/code2f/code2f.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -40,8 +41,8 @@ registerLocaleData(localeEs);
   declarations: [
     AppComponent,
     ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
-    DailyRoutineComponent, 
-    WeeklyRoutineComponent, ProgressTrackerComponent
+    //DailyRoutineComponent, 
+    //WeeklyRoutineComponent, ProgressTrackerComponent
   ],
   imports: [
     // Angular Modules
@@ -70,10 +71,11 @@ registerLocaleData(localeEs);
     ReactiveFormsModule, 
     RouterModule,
 
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' }, // Configuración de localización (es)
-    DatePipe // Proveedor para usar DatePipe en los componentes
+    DatePipe, // Proveedor para usar DatePipe en los componentes,
   ],
 
   bootstrap: [AppComponent]

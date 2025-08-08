@@ -12,11 +12,12 @@
   </div>
 
   <div *ngIf="selectedRoutine" class="routine-details">
-    <h3>{{ selectedRoutine.name }}</h3>
+    <h3>{{ selectedRoutine ?  selectedRoutine.name : ''}}</h3>
     
     <div class="progress-bar">
       <div class="progress" [style.width.%]="currentWeekProgress"></div>
-      <span>{{ currentWeekProgress | number:'1.0-0' }}% completado</span>
+      <!-- <span>{{ currentWeekProgress | number:'1.0-0' }}% completado</span> -->
+      <span>{{ currentWeekProgress }}% completado</span>
     </div>
     
     <div *ngFor="let day of selectedRoutine.rutinas; let i = index" class="day-container">
