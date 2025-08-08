@@ -24,8 +24,7 @@ import { DatePipe } from '@angular/common';
 
 // Componentes
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+
 
 import { ExerciseListComponent } from './components/excercise-list/excercise-list.component'; // Asegúrate de que el nombre del componente sea correcto
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
@@ -40,8 +39,6 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
     DailyRoutineComponent, 
     WeeklyRoutineComponent
