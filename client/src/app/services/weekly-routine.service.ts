@@ -21,5 +21,5 @@ export class WeeklyRoutineService {
 
   //updateDailyRoutine(weeklyRoutineId: string, day: number, dailyRoutine: DailyRoutine): Observable<WeeklyRoutine> {
     //return this.http.patch<WeeklyRoutine>(`${this.apiUrl}/${weeklyRoutineId}/day/${day}`, dailyRoutine);
- // }
+ // } Comentado por ahora, se implementará más adelante
 }

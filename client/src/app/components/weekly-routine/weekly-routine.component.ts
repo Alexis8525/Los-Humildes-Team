@@ -111,7 +111,7 @@ export class WeeklyRoutineComponent implements OnInit {
   isCreating: boolean = false;
   errorMessage: string = '';
 
-// Métodos auxiliares para el template
+// Métodos auxiliares 
 isDaySaved(dayId: number): boolean {
   return this.weeklyRoutine.rutinas.some(r => r.day === dayId);
 }

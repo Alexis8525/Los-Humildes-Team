@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   { 
     path: '', 
-    redirectTo: '/daily-routine', 
+    redirectTo: '/', 
     pathMatch: 'full' 
   },
   { path: 'weekly-routine', component: WeeklyRoutineComponent },

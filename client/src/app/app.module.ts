@@ -25,7 +25,6 @@ import { DatePipe } from '@angular/common';
 // Componentes
 import { AppComponent } from './app.component';
 
-
 import { ExerciseListComponent } from './components/excercise-list/excercise-list.component'; // Asegúrate de que el nombre del componente sea correcto
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -72,7 +71,7 @@ registerLocaleData(localeEs);
 
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'es-ES' }, // Configuración de localización
+    { provide: LOCALE_ID, useValue: 'es-ES' }, // Configuración de localización (es)
     DatePipe // Proveedor para usar DatePipe en los componentes
   ],
 
