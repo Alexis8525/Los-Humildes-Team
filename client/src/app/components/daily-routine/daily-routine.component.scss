@@ -5,9 +5,9 @@ $primary-color: #1976D2;         // Azul primario
 $secondary-color: #0D47A1;       // Azul oscuro
 $accent-color: #64B5F6;          // Azul claro
 $metallic-blue: #4682B4;         // Azul acero
-$light-bg: #E3F2FD;              // Fondo claro
-$text-color: #212121;            // Texto principal
-$text-light: #ECEFF1;            // Texto claro
+$text-color: #9e0c0c;            // Texto principal
+$text-light: #090c0f;            // Texto claro
+
 
 .routine-form {
   font-family: 'Roboto', sans-serif;
@@ -59,6 +59,7 @@ $text-light: #ECEFF1;            // Texto claro
       color: $secondary-color;
       font-weight: 500;
       font-size: 0.95rem;
+      box-shadow: 0 6px 12px rgba(14, 14, 15, 0.15);
     }
 
     input, textarea {
@@ -69,6 +70,7 @@ $text-light: #ECEFF1;            // Texto claro
       background-color: rgba(255, 255, 255, 0.8);
       transition: all 0.3s ease;
       font-family: 'Roboto', sans-serif;
+      box-shadow: 0 6px 12px rgba(14, 14, 15, 0.15);
 
       &:focus {
         outline: none;
@@ -96,18 +98,18 @@ $text-light: #ECEFF1;            // Texto claro
 
   .exercise-card {
     padding: 1.25rem;
-    background: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(232, 244, 253, 0.95) 100%);
+    background: linear-gradient(145deg, rgba(206, 22, 22, 0.95) 0%, rgba(28, 132, 212, 0.95) 100%);
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 1px solid rgba($metallic-blue, 0.1);
-    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.08);
+    box-shadow: 0 2px 4px rgba(14, 14, 15, 0.08);
 
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(25, 118, 210, 0.15);
+      box-shadow: 0 6px 12px rgba(14, 14, 15, 0.15);
       border-color: rgba($accent-color, 0.3);
-      background: linear-gradient(145deg, rgba(255,255,255,1) 0%, rgba(220, 240, 255, 1) 100%);
+      background: linear-gradient(145deg, rgb(20, 18, 18) 0%, rgb(7, 8, 8) 100%);
     }
 
     h4 {

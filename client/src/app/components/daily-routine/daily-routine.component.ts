@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
 import { ExerciseService } from '../../services/exercise.service';
 import { RoutineService } from '../../services/routine.service';
 import { Exercise } from '../../models/exercise.model';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Routine, RoutineExercise } from '../../models/routine.model';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-daily-routine',
@@ -16,14 +17,17 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NavbarComponent,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    RouterModule
     ],
   templateUrl: './daily-routine.component.html',
   styleUrls: ['./daily-routine.component.scss']
 })
 export class DailyRoutineComponent implements OnInit {
+  @ViewChild('sidebar') sidebarRef!: ElementRef;
+        private isBrowser: boolean;
+        public isExpanded: boolean = false;
   exercises: Exercise[] = [];
   selectedExercises: RoutineExercise[] = [];
   routine: Routine = {
@@ -35,11 +39,17 @@ export class DailyRoutineComponent implements OnInit {
   };
   isLoading = false;
   errorMessage = '';
+  isCollapsed = false;
 
   constructor(
     private exerciseService: ExerciseService,
-    private routineService: RoutineService
-  ) {}
+    private routineService: RoutineService,
+    private renderer: Renderer2, 
+      @Inject(PLATFORM_ID) private platformId: Object,
+          private router: Router
+      ) {
+        this.isBrowser = isPlatformBrowser(this.platformId);
+      }
 
   ngOnInit(): void {
     this.loadExercises();
@@ -117,5 +127,24 @@ export class DailyRoutineComponent implements OnInit {
     };
     this.selectedExercises = [];
     this.isLoading = false;
+  }
+  toggleSidebar(): void {
+    this.isCollapsed = !this.isCollapsed;
+    if (this.isBrowser) {
+      const sidebar = this.sidebarRef.nativeElement;
+      if (this.isExpanded) {
+        this.renderer.removeClass(sidebar, 'expand');
+      } else {
+        this.renderer.addClass(sidebar, 'expand');
+      }
+      this.isExpanded = !this.isExpanded;
+    }
+  }
+
+  logout(): void {
+    if (this.isBrowser) {
+      // Aquí puedes agregar lógica para limpiar localStorage/sessionStorage si es necesario
+      this.router.navigate(['/login']); // Ajusta la ruta según tu configuración
+    }
   }
 }
