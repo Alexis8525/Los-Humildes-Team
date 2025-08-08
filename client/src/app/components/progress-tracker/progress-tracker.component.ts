@@ -2,9 +2,14 @@
 import { Component, OnInit } from '@angular/core';
 import { WeeklyRoutineService } from '../../services/weekly-routine.service';
 import { WeeklyRoutine, DailyRoutine } from '../../models/weekly-routine.model';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-progress-tracker',
+  standalone: true,
+      imports: [CommonModule,RouterModule,FormsModule],
   templateUrl: './progress-tracker.component.html',
   styleUrls: ['./progress-tracker.component.scss']
 })

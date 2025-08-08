@@ -42,8 +42,7 @@ registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
+    AppComponent, // Corregí el nombre de "Excercise" a "Exercise"
     //DailyRoutineComponent, 
     //WeeklyRoutineComponent, ProgressTrackerComponent
   ],

@@ -1,20 +1,30 @@
 <div class="wrapper">
-  
     <div class="main">
         
-      <!-- Barra de navegación con la barra de búsqueda global -->
-      <nav class="navbar navbar-expand-lg p-0" style="background-color: #001f3f;">
-        <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
-          <!-- Logo -->
-          <a class="navbar-brand ms-3" href="/pagina-principal">
-            <img src="assets/tuxfitnes.png" alt="LexVargas Logo" width="50" class="d-inline-block align-text-top">
-          </a>
+    <!-- Barra de navegación con la barra de búsqueda global -->
+<nav class="navbar navbar-expand-lg p-0" style="background-color: #001f3f;">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+            <a routerLink="/pagina-principal" class="text-2xl font-bold text-white">
+            <img src="assets/tuxfitnes.png" alt="TuxFitness" class="w-36 h-auto" />
+            </a>
         </div>
-      </nav>
-  
-      <div class="p-3">  
-        <app-barra-lateral></app-barra-lateral>
 
+        <div class="hidden md:flex space-x-7">
+            <a [routerLink]="['/weekly-routine']" class="text-white hover:text-blue-200">Rutina Semana</a>
+            <a [routerLink]="['/daily-routine']" class="text-white hover:text-blue-200">Rutina Diaria</a>
+            <a [routerLink]="['/ejecicios']" class="text-white hover:text-blue-200">Ejecicios</a>
+            <a [routerLink]="['/settings']" class="text-white hover:text-blue-200">Configuración</a>
+        </div>
+        <div class="flex items-center space-x-1">
+            <a href="#"  class="text-white hover:text-blue-200" (click)="logout()">Cerrar Sesión</a>
+        </div>
+        </div>
+        
+</nav>
+  
+      <div class="p-3 min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">  
+        
         <!-- Contenido original de tu página -->
         <div class="dashboard-container">
           <!-- Header de bienvenida -->
@@ -100,27 +110,8 @@
           <section class="current-progress bg-white rounded-xl shadow-md p-6 mb-12">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-2xl font-bold text-gray-800">Tu progreso</h2>
-              <a href="#" class="text-blue-600 hover:underline">Ver detalle</a>
             </div>
-            
-            <div class="progress-bar bg-gray-200 rounded-full h-4 mb-4">
-              <div class="bg-blue-600 h-4 rounded-full" style="width: 40%"></div>
-            </div>
-            
-            <div class="grid grid-cols-3 gap-4 text-center">
-              <div>
-                <p class="text-gray-500 text-sm">Días completados</p>
-                <p class="text-xl font-bold">12</p>
-              </div>
-              <div>
-                <p class="text-gray-500 text-sm">Porcentaje</p>
-                <p class="text-xl font-bold">40%</p>
-              </div>
-              <div>
-                <p class="text-gray-500 text-sm">Restantes</p>
-                <p class="text-xl font-bold">18</p>
-              </div>
-            </div>
+            <app-progress-tracker></app-progress-tracker>
           </section>
   
           <!-- Motivación -->

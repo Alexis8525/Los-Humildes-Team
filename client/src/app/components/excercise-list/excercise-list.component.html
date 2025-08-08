@@ -1,1 +1,161 @@
-<p>excercise-list works!</p>
+<div class="wrapper">
+    <div class="main">
+      <!-- Barra de navegación -->
+      <nav class="navbar navbar-expand-lg p-0" style="background-color: #001f3f;">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <a routerLink="/pagina-principal" class="text-2xl font-bold text-white">
+                <img src="assets/tuxfitnes.png" alt="TuxFitness" class="w-36 h-auto" />
+                </a>
+            </div>
+    
+            <div class="hidden md:flex space-x-7">
+                <a [routerLink]="['/weekly-routine']" class="text-white hover:text-blue-200">Rutina Semana</a>
+                <a [routerLink]="['/daily-routine']" class="text-white hover:text-blue-200">Rutina Diaria</a>
+                <a [routerLink]="['/ejecicios']" class="text-white hover:text-blue-200">Ejecicios</a>
+                <a [routerLink]="['/settings']" class="text-white hover:text-blue-200">Configuración</a>
+                
+            </div>
+            <div class="flex items-center space-x-1">
+                <a href="#"  class="text-white hover:text-blue-200" (click)="logout()">Cerrar Sesión</a>
+            </div>
+            </div>
+            
+      </nav>
+      
+      <div class="p-3 min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
+        <!-- Imagen de fondo similar al segundo ejemplo -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80')] bg-cover bg-center"></div>
+        
+        <!-- Contenido principal con fondo semitransparente para mejor legibilidad -->
+        <div class="relative z-10  bg-opacity-70 rounded-lg p-6 text-white">
+          <div class="content-container">  
+              <div class="exercise-list-container">
+                <div class="header">
+                  <h2>Lista de Ejercicios</h2>
+                  <button class="add-exercise-btn" (click)="showAddForm = !showAddForm">
+                    {{ showAddForm ? 'Cancelar' : 'Agregar Ejercicio' }}
+                  </button>
+                </div>
+        
+                <!-- Formulario para agregar nuevo ejercicio -->
+                <div class="add-exercise-form" *ngIf="showAddForm">
+                  <h3>Agregar Nuevo Ejercicio</h3>
+                  
+                  <div class="form-group">
+                    <label>Nombre del Ejercicio*</label>
+                    <input type="text" [(ngModel)]="newExercise.name" placeholder="Ej: Sentadillas">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Grupos Musculares*</label>
+                    <div class="muscle-groups-input">
+                      <input type="text" [(ngModel)]="muscleGroupInput" placeholder="Ej: Piernas" (keyup.enter)="addMuscleGroup()">
+                      <button class="add-group-btn" (click)="addMuscleGroup()">+</button>
+                    </div>
+                    <div class="muscle-groups-list">
+                      <span *ngFor="let group of newExercise.muscleGroups; let i = index">
+                        {{ group }} <button class="remove-group-btn" (click)="removeMuscleGroup(i)">×</button>
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Equipo Requerido*</label>
+                    <select [(ngModel)]="newExercise.equipmentRequired">
+                      <option value="">Seleccione...</option>
+                      <option *ngFor="let equip of equipmentOptions" [value]="equip">{{ equip }}</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Dificultad*</label>
+                    <select [(ngModel)]="newExercise.difficulty">
+                      <option value="fácil">Fácil</option>
+                      <option value="medio">Medio</option>
+                      <option value="difícil">Difícil</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>URL de Video (opcional)</label>
+                    <input type="text" [(ngModel)]="newExercise.videoUrl" placeholder="https://...">
+                  </div>
+                  
+                  <div class="form-actions">
+                    <button class="clear-btn" (click)="resetForm()">Limpiar</button>
+                    <button class="save-btn" (click)="submitExercise()">Guardar</button>
+                  </div>
+                  
+                  <div class="error-message" *ngIf="error">{{ error }}</div>
+                </div>
+        
+                <!-- Filtros -->
+                <div class="filters">
+                  <div class="form-group">
+                    <label>Buscar</label>
+                    <input type="text" [(ngModel)]="searchTerm" (input)="filterExercises()" placeholder="Nombre o grupo muscular">
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Visibilidad</label>
+                    <select [(ngModel)]="selectedVisibility" (change)="filterExercises()">
+                      <option value="all">Todos</option>
+                      <option value="system">Sistema</option>
+                      <option value="private">Privados</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Dificultad</label>
+                    <select [(ngModel)]="selectedDifficulty" (change)="filterExercises()">
+                      <option value="all">Todas</option>
+                      <option value="fácil">Fácil</option>
+                      <option value="medio">Medio</option>
+                      <option value="difícil">Difícil</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Equipo</label>
+                    <select [(ngModel)]="selectedEquipment" (change)="filterExercises()">
+                      <option value="all">Todos</option>
+                      <option *ngFor="let equip of equipmentOptions" [value]="equip">{{ equip }}</option>
+                    </select>
+                  </div>
+                </div>
+        
+                <!-- Lista de ejercicios -->
+                <div class="loading" *ngIf="loading">Cargando ejercicios...</div>
+                
+                <div class="exercise-grid" *ngIf="!loading">
+                  <div *ngFor="let exercise of filteredExercises" class="exercise-card">
+                    <div class="exercise-header">
+                      <h3>{{ exercise.name | titlecase }}</h3>
+                      <div class="exercise-meta">
+                        <span class="difficulty {{ exercise.difficulty }}">{{ exercise.difficulty }}</span>
+                        <span class="equipment">{{ exercise.equipmentRequired }}</span>
+                      </div>
+                    </div>
+                    
+                    <div class="muscle-groups">
+                      <span *ngFor="let group of exercise.muscleGroups">{{ group }}</span>
+                    </div>
+                    
+                    <div class="exercise-footer">
+                      <span class="visibility">{{ exercise.visibility === 'system' ? 'Sistema' : 'Privado' }}</span>
+                      <button class="delete-btn" (click)="deleteExercise(exercise._id)">Eliminar</button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="no-results" *ngIf="!loading && filteredExercises.length === 0">
+                  No se encontraron ejercicios que coincidan con los filtros.
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
 import { ExerciseService } from '../../services/exercise.service';
 import { WeeklyRoutineService } from '../../services/weekly-routine.service';
 import { Exercise } from '../../models/exercise.model';
 import { WeeklyRoutine, DailyRoutine, WeeklyRoutineExercise } from './../../models/weekly-routine.model'; 
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BarraLateralComponent } from '../pagina_principal/barra-lateral/barra-lateral.component';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-weekly-routine',
@@ -19,12 +20,15 @@ import { BarraLateralComponent } from '../pagina_principal/barra-lateral/barra-l
       ReactiveFormsModule,
       MatIconModule,
       MatProgressSpinnerModule,
-      BarraLateralComponent
+      RouterModule
       ],
   templateUrl: './weekly-routine.component.html',
   styleUrls: ['./weekly-routine.component.scss']
 })
 export class WeeklyRoutineComponent implements OnInit {
+  @ViewChild('sidebar') sidebarRef!: ElementRef;
+      private isBrowser: boolean;
+      public isExpanded: boolean = false;
   exercises: Exercise[] = [];
   days = [
     { id: 1, name: 'Lunes' },
@@ -47,8 +51,15 @@ export class WeeklyRoutineComponent implements OnInit {
 
   constructor(
     private exerciseService: ExerciseService,
-    private weeklyRoutineService: WeeklyRoutineService
-  ) {}
+    private weeklyRoutineService: WeeklyRoutineService,
+    private renderer: Renderer2, 
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router) 
+    {
+      this.isBrowser = isPlatformBrowser(this.platformId);
+    }
+
+        isCollapsed = false;
 
   ngOnInit(): void {
     this.loadExercises();
@@ -134,4 +145,25 @@ isDaySaved(dayId: number): boolean {
 isExerciseAdded(exerciseId: string): boolean {
   return this.dayExercises.some(e => e.exerciseId === exerciseId);
 }
+toggleSidebar(): void {
+  this.isCollapsed = !this.isCollapsed;
+  if (this.isBrowser) {
+    const sidebar = this.sidebarRef.nativeElement;
+    if (this.isExpanded) {
+      this.renderer.removeClass(sidebar, 'expand');
+    } else {
+      this.renderer.addClass(sidebar, 'expand');
+    }
+    this.isExpanded = !this.isExpanded;
+  }
+}
+
+logout(): void {
+  if (this.isBrowser) {
+    // Aquí puedes agregar lógica para limpiar localStorage/sessionStorage si es necesario
+    this.router.navigate(['/login']); // Ajusta la ruta según tu configuración
+  }
+}
+
+
 }

@@ -2,24 +2,31 @@
   <div class="main">
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg p-0" style="background-color: #001f3f;">
-      <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
-        <!-- Logo -->
-        <a class="navbar-brand ms-3" href="/pagina-principal">
-          <img src="assets/tuxfitnes.png" alt="TuxFitness Logo" width="50" class="d-inline-block align-text-top">
-        </a>
-      </div>
-    </nav>
-
-    <div class="p-3">  
-      <app-barra-lateral></app-barra-lateral>
-<div class="weekly-routine-form">
-  <h2>Crear Tu Rutina Semanal</h2>
+      <div class="container mx-auto flex justify-between items-center">
+          <div class="flex items-center">
+              <a routerLink="/pagina-principal" class="text-2xl font-bold text-white">
+              <img src="assets/tuxfitnes.png" alt="TuxFitness" class="w-36 h-auto" />
+              </a>
+          </div>
   
-  <div class="form-group">
-    <label>Nombre de la Rutina Semanal</label>
-    <input type="text" [(ngModel)]="weeklyRoutine.name" placeholder="Ej: Rutina de volumen">
-  </div>
+          <div class="hidden md:flex space-x-7">
+            <a [routerLink]="['/weekly-routine']" class="text-white hover:text-blue-200">Rutina Semana</a>
+            <a [routerLink]="['/daily-routine']" class="text-white hover:text-blue-200">Rutina Diaria</a>
+            <a [routerLink]="['/ejecicios']" class="text-white hover:text-blue-200">Ejecicios</a>
+            <a [routerLink]="['/settings']" class="text-white hover:text-blue-200">Configuración</a>
+          </div>
+          <div class="flex items-center space-x-1">
+              <a href="#"  class="text-white hover:text-blue-200" (click)="logout()">Cerrar Sesión</a>
+          </div>
+          </div>
+          
+  </nav>
 
+    <div class="p-3 min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">  
+      <div
+        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80')] bg-cover bg-center">
+      </div>
+      
       <!-- Contenido del formulario de rutina semanal -->
       <div class="weekly-routine-form">
         <h2>Crear Rutina Semanal</h2>

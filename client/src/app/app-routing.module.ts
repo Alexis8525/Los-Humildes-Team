@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
 import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
 import { isAuthGuard } from './guards/is-auth.guard';
+import { ExerciseListComponent } from './components/excercise-list/excercise-list.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
 
   { path: 'daily-routine',component: DailyRoutineComponent },
   { path: 'weekly-routine', component: WeeklyRoutineComponent },
+  { path: 'ejecicios', component: ExerciseListComponent },
   { path: 'pagina-principal', component: PaginaPrincipalComponent },
 ];
 

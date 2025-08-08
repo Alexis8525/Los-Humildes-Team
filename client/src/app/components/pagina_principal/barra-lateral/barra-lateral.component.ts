@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./barra-lateral.component.scss']
 })
 export class BarraLateralComponent {
+  
   @ViewChild('sidebar') sidebarRef!: ElementRef;
   private isBrowser: boolean;
   public isExpanded: boolean = false;
@@ -23,7 +24,11 @@ export class BarraLateralComponent {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
+  isCollapsed = false;
+
+
   toggleSidebar(): void {
+    this.isCollapsed = !this.isCollapsed;
     if (this.isBrowser) {
       const sidebar = this.sidebarRef.nativeElement;
       if (this.isExpanded) {

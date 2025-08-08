@@ -1,0 +1,386 @@
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$danger-color: #e74c3c;
+$dark-color: #2c3e50;
+$light-color: #ecf0f1;
+$text-color: #333;
+$text-light: #7f8c8d;
+$border-color: #ddd;
+
+.wrapper {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .p-3 {
+    background-color: #f5f0e6;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-grow: 1;
+    max-height: 100vh;
+    padding: 2rem;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: $text-color;
+    background-color: #f5f7fa;
+  }
+
+  .wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content-container {
+    padding: 1.5rem;
+    flex: 1;
+    background-color: #d7dbe6;
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+
+.exercise-list-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-size: 1.8rem;
+      color: $dark-color;
+      margin: 0;
+    }
+  }
+  
+  /* Botones */
+  .add-exercise-btn {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+  
+  /* Formulario */
+  .add-exercise-form {
+    background: $light-color;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    h3 {
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      color: $dark-color;
+      font-size: 1.4rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.2rem;
+      
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: $dark-color;
+      }
+      
+      input, select {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: white;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+        }
+      }
+    }
+    
+    .muscle-groups-input {
+      display: flex;
+      gap: 0.5rem;
+      
+      input {
+        flex: 1;
+      }
+      
+      .add-group-btn {
+        background-color: $secondary-color;
+        color: white;
+        border: none;
+        width: 40px;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+        }
+      }
+    }
+    
+    .muscle-groups-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      
+      span {
+        display: inline-flex;
+        align-items: center;
+        background: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+      
+      .remove-group-btn {
+        background: none;
+        border: none;
+        color: $danger-color;
+        cursor: pointer;
+        margin-left: 0.3rem;
+        font-size: 1rem;
+        padding: 0 0.2rem;
+      }
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .clear-btn {
+      background-color: $text-light;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: darken($text-light, 10%);
+      }
+    }
+    
+    .save-btn {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+    
+    .error-message {
+      color: $danger-color;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Filtros */
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    background: $light-color;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    .form-group {
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: $dark-color;
+      }
+      
+      input, select {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: white;
+        
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+  
+  /* Mensajes */
+  .loading, .no-results {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.1rem;
+    color: $text-light;
+  }
+  
+  /* Grid de ejercicios */
+  .exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    
+    .exercise-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .exercise-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        
+        h3 {
+          margin: 0;
+          font-size: 1.2rem;
+          color: $dark-color;
+          flex: 1;
+        }
+        
+        .exercise-meta {
+          display: flex;
+          gap: 0.5rem;
+          
+          .difficulty {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            
+            &.fácil {
+              background: rgba($secondary-color, 0.1);
+              color: darken($secondary-color, 15%);
+            }
+            
+            &.medio {
+              background: rgba(#f39c12, 0.1);
+              color: darken(#f39c12, 15%);
+            }
+            
+            &.difícil {
+              background: rgba($danger-color, 0.1);
+              color: darken($danger-color, 15%);
+            }
+          }
+          
+          .equipment {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            background: rgba($primary-color, 0.1);
+            color: darken($primary-color, 15%);
+          }
+        }
+      }
+      
+      .muscle-groups {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        
+        span {
+          display: inline-block;
+          background: rgba($dark-color, 0.05);
+          padding: 0.3rem 0.8rem;
+          border-radius: 4px;
+          font-size: 0.85rem;
+          color: $dark-color;
+        }
+      }
+      
+      .exercise-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba($border-color, 0.5);
+        
+        .visibility {
+          font-size: 0.85rem;
+          color: $text-light;
+          text-transform: capitalize;
+        }
+        
+        .delete-btn {
+          background-color: rgba($danger-color, 0.1);
+          color: $danger-color;
+          border: none;
+          padding: 0.4rem 0.8rem;
+          border-radius: 4px;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: all 0.2s;
+          
+          &:hover {
+            background-color: $danger-color;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
