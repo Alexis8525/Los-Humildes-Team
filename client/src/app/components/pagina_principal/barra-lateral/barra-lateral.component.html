@@ -1,0 +1,44 @@
+<div class="wrapper">
+    <aside id="sidebar" #sidebar>
+      <div class="d-flex">
+        <button class="toggle-btn" type="button" (click)="toggleSidebar()">
+          <i class="lni lni-menu"></i>
+        </button>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="sidebar-item">
+          <a [routerLink]="['/']" class="sidebar-link">
+            <i class="lni lni-home"></i>
+            <span>Home</span>
+          </a>
+        </li>      
+  
+        <li class="sidebar-item">
+          <a [routerLink]="['/daily-routine']" class="sidebar-link">
+            <i class="lni lni-list"></i>
+            <span>Rutina Diaria</span>
+          </a>
+        </li>
+  
+        <li class="sidebar-item">
+          <a [routerLink]="['/weekly-routine']" class="sidebar-link">
+            <i class="lni lni-calendar"></i>
+            <span>Rutina Semanal</span>
+          </a>
+        </li>
+        
+        <li class="sidebar-item">
+          <a [routerLink]="['/settings']" class="sidebar-link">
+            <i class="lni lni-cog"></i>
+            <span>Configuración</span>
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-link" (click)="logout()">
+          <i class="lni lni-exit"></i>
+          <span>Cerrar Sesión</span>
+        </a>
+      </div>      
+    </aside>
+  </div>

@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
+import { BarraLateralComponent } from '../pagina_principal/barra-lateral/barra-lateral.component';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NavbarComponent
+    NavbarComponent,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
@@ -48,7 +49,7 @@ export class LoginComponent {
       console.log('Formulario válido:', this.loginForm.value);
       // Aquí iría la lógica para autenticar al usuario
       // Ejemplo: this.authService.login(this.loginForm.value);
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/pagina-principal']);
     }
   }
 }

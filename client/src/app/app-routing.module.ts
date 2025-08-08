@@ -9,6 +9,7 @@ import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routi
 import { HomeComponent } from './components/pagina_principal/home/home.component';
 import { NavbarComponent } from './components/pagina_principal/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
 
 
 const routes: Routes = [
@@ -16,16 +17,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-    { 
-    path: 'daily-routine', 
-    component: DailyRoutineComponent 
-  },
-  { 
-    path: '', 
-    redirectTo: '/daily-routine', 
-    pathMatch: 'full' 
-  },
+  { path: 'daily-routine',component: DailyRoutineComponent },
   { path: 'weekly-routine', component: WeeklyRoutineComponent },
+  { path: 'pagina-principal', component: PaginaPrincipalComponent },
 ];
 
 @NgModule({

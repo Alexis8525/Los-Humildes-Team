@@ -1,49 +1,66 @@
-<app-navbar></app-navbar>
+<div class="wrapper">
+  <div class="main">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg p-0" style="background-color: #001f3f;">
+      <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+        <!-- Logo -->
+        <a class="navbar-brand ms-3" href="/pagina-principal">
+          <img src="assets/tuxfitnes.png" alt="TuxFitness Logo" width="50" class="d-inline-block align-text-top">
+        </a>
+      </div>
+    </nav>
 
-<div class="weekly-routine-form">
-  <h2>Crear Rutina Semanal</h2>
-  
-  <div class="form-group">
-    <label>Nombre de la Rutina Semanal</label>
-    <input type="text" [(ngModel)]="weeklyRoutine.name" placeholder="Ej: Rutina de volumen">
-  </div>
+    <div class="p-3">  
+      <app-barra-lateral></app-barra-lateral>
 
-  <h3>Días de la Semana</h3>
-  <div class="days-grid">
-    <div *ngFor="let day of days" 
-         class="day-card" 
-         [class.selected]="selectedDay === day.id"
-         (click)="selectDay(day.id)">
-      {{ day.name }}
-    </div>
-  </div>
+      <!-- Contenido del formulario de rutina semanal -->
+      <div class="weekly-routine-form">
+        <h2>Crear Rutina Semanal</h2>
+        
+        <div class="form-group">
+          <label>Nombre de la Rutina Semanal</label>
+          <input type="text" [(ngModel)]="weeklyRoutine.name" placeholder="Ej: Rutina de volumen">
+        </div>
 
-  <div *ngIf="selectedDay !== null">
-    <h3>Ejercicios para {{ getDayName(selectedDay) }}</h3>
-    
-    <div class="exercise-grid">
-      <div *ngFor="let exercise of exercises" 
-           class="exercise-card" 
-           (click)="addExercise(exercise)">
-        <h4>{{ exercise.name }}</h4>
-        <p>{{ exercise.muscleGroups.join(', ') }}</p>
+        <h3>Días de la Semana</h3>
+        <div class="days-grid">
+          <div *ngFor="let day of days" 
+              class="day-card" 
+              [class.selected]="selectedDay === day.id"
+              (click)="selectDay(day.id)">
+            {{ day.name }}
+          </div>
+        </div>
+
+        <div *ngIf="selectedDay !== null">
+          <h3>Ejercicios para {{ getDayName(selectedDay) }}</h3>
+          
+          <div class="exercise-grid">
+            <div *ngFor="let exercise of exercises" 
+                class="exercise-card" 
+                (click)="addExercise(exercise)">
+              <h4>{{ exercise.name }}</h4>
+              <p>{{ exercise.muscleGroups.join(', ') }}</p>
+            </div>
+          </div>
+
+          <h4>Ejercicios Seleccionados</h4>
+          <div *ngFor="let exercise of dayExercises; let i = index" class="selected-exercise">
+            <div>
+              <strong>{{ getExerciseName(exercise.exerciseId) }}</strong>
+              <span>Series: {{ exercise.series }}</span>
+              <span>Reps: {{ exercise.repeticiones }}</span>
+              <span>Descanso: {{ exercise.descanso }}</span>
+            </div>
+          </div>
+
+          <button (click)="saveDay()">Guardar Día</button>
+        </div>
+
+        <button (click)="createWeeklyRoutine()" [disabled]="weeklyRoutine.rutinas.length === 0">
+          Crear Rutina Semanal
+        </button>
       </div>
     </div>
-
-    <h4>Ejercicios Seleccionados</h4>
-    <div *ngFor="let exercise of dayExercises; let i = index" class="selected-exercise">
-      <div>
-        <strong>{{ getExerciseName(exercise.exerciseId) }}</strong>
-        <span>Series: {{ exercise.series }}</span>
-        <span>Reps: {{ exercise.repeticiones }}</span>
-        <span>Descanso: {{ exercise.descanso }}</span>
-      </div>
-    </div>
-
-    <button (click)="saveDay()">Guardar Día</button>
   </div>
-
-  <button (click)="createWeeklyRoutine()" [disabled]="weeklyRoutine.rutinas.length === 0">
-    Crear Rutina Semanal
-  </button>
 </div>

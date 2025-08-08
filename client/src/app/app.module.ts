@@ -30,6 +30,8 @@ import { ExerciseListComponent } from './components/excercise-list/excercise-lis
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
+import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
+import { BarraLateralComponent } from './components/pagina_principal/barra-lateral/barra-lateral.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -39,7 +41,6 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
-    ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise" 
   ],
   imports: [
     // Angular Modules
