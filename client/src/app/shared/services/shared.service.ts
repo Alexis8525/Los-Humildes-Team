@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Respuesta } from '../interfaces/respuesta.interface';
+import { Respuesta } from '../../interfaces/respuesta.interface';
 import { environment } from '../../../environments/environment.development';
 
 
@@ -21,4 +21,6 @@ export class SharedService {
   confirmarTokenNewPass(token:string):Observable<Respuesta>{
     return this.http.get<Respuesta>(`${this.baseUrl}/auth/new-pass/${token}`);
   }
+
+
 }

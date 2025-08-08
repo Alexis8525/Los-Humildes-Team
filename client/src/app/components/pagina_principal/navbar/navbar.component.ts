@@ -1,8 +1,9 @@
-import { Component,OnInit, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { Component,OnInit, Renderer2, Inject, PLATFORM_ID, signal, inject, computed } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
 
 
 // Definir la interface fuera de la clase
@@ -26,13 +27,18 @@ export class NavbarComponent implements OnInit {
     { id: 'navServicios', url: '/principal-servicios' },
     { id: 'navContacto', url: '/principal-contactos' }
   ];
-
+  private authService = inject(AuthService);
   constructor(
     private renderer: Renderer2, 
     private location: Location,
     @Inject(PLATFORM_ID) private platformId: Object // Inject the platform ID
   ) { }
 
+  isAuth = computed(()=>{
+    console.log('señal cambiando');
+    return this.authService.isAuth();
+  })
+  
   // Implementación de ngOnInit
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -62,6 +68,11 @@ export class NavbarComponent implements OnInit {
         this.renderer.addClass(element, 'active');
       }
     }
+  }
+
+  logOut(){
+    console.log('logout...');
+    this.authService.isAuth.set(false);
   }
 
 }
