@@ -3,9 +3,23 @@ import { ExerciseService } from '../../services/exercise.service';
 import { WeeklyRoutineService } from '../../services/weekly-routine.service';
 import { Exercise } from '../../models/exercise.model';
 import { WeeklyRoutine, DailyRoutine, WeeklyRoutineExercise } from './../../models/weekly-routine.model'; 
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-weekly-routine',
+  standalone: true,
+      imports: [
+      CommonModule,
+      FormsModule,
+      ReactiveFormsModule,
+      NavbarComponent,
+      MatIconModule,
+      MatProgressSpinnerModule
+      ],
   templateUrl: './weekly-routine.component.html',
   styleUrls: ['./weekly-routine.component.scss']
 })
