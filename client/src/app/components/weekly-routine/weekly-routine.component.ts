@@ -5,7 +5,7 @@ import { Exercise } from '../../models/exercise.model';
 import { WeeklyRoutine, DailyRoutine, WeeklyRoutineExercise } from './../../models/weekly-routine.model'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component';
+import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
