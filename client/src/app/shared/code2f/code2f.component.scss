@@ -1,0 +1,34 @@
+$imagen:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
+
+.capa { 
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.829), rgba(0, 0, 0, 0.781)), url($imagen);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+label {
+  font-size: 1.4rem;
+}
+
+a{
+  font-size: 1.1rem;
+}
+
+button {
+  font-size: 1.4rem;
+  padding-block: 1rem;
+  font-weight: 500;
+}
+
+p{
+    color :var(--color-fondo);
+    margin-bottom: 1.4rem;
+    font-size: 1.4rem;
+}
+
+.btns {
+  display: flex;
+  gap:1rem;
+}

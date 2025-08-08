@@ -6,7 +6,7 @@
 /* Tus estilos personalizados */
 :root {
   --color-fondo: #020724;
-  --color-btns: #d86b22;
+  --color-btns: #226bd8;
   --color-fondo-dgr: #292e4b;
   --color-blanco: #ebeef3;
   --color-rojo-fondo: #fbc8c8;
@@ -35,4 +35,21 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*helps*/
+.error{
+  font-size: 1.2rem;
+  font-weight: 700;
+  background-color: rgb(252, 210, 210);
+  padding: 1rem 1.5rem;
+  border-radius: .5rem;
+}
+
+input{
+  color:var(--color-fondo)
+}
+
+.font-size-small {
+  font-size: 1.15rem;
 }

@@ -1,17 +1,18 @@
-
 <app-navbar></app-navbar>
 
 <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 relative">
   <!-- Fondo con imagen y overlay -->
   <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
-  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80')] bg-cover bg-center"></div>
-  
+  <div
+    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80')] bg-cover bg-center">
+  </div>
+
   <div class="relative max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden md:max-w-2xl z-10">
     <!-- Header con gradiente -->
     <div class="bg-gradient-to-r from-blue-600 to-blue-800 py-4 px-6">
       <h2 class="text-2xl font-bold text-white text-center">Crear Cuenta</h2>
     </div>
-    
+
     <div class="p-8">
       <!-- Resto del formulario permanece igual -->
       <!-- Tabs -->
@@ -23,24 +24,43 @@
 
       <!-- Registration Form -->
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <!-- Name Field -->
-        <div class="mb-6">
-          <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
-            Nombre completo <span class="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="name"
-            formControlName="name"
-            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Ej: Juan Pérez"
-          >
-          <div class="text-red-500 text-sm mt-1" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
-            <div *ngIf="registerForm.get('name')?.hasError('required')">
-              Este campo es obligatorio
+        <div class="fullname">
+
+          <!-- Name Field -->
+          <div class="mb-6">
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+              Nombre <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="name" formControlName="name"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Ej: Juan">
+            <div class="text-red-500 text-sm mt-1 error"
+              *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+              <div *ngIf="registerForm.get('name')?.hasError('required')">
+                Este campo es obligatorio
+              </div>
+              <div *ngIf="registerForm.get('name')?.hasError('minlength')">
+                Mínimo 3 caracteres
+              </div>
             </div>
-            <div *ngIf="registerForm.get('name')?.hasError('minlength')">
-              Mínimo 3 caracteres
+          </div>
+
+          <!-- Name Field -->
+          <div class="mb-6">
+            <label for="lastN" class="block text-sm font-medium text-gray-700 mb-1">
+              Apellido <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="lastN" formControlName="lastN"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Ej: Pérez">
+            <div class="text-red-500 text-sm mt-1 error"
+              *ngIf="registerForm.get('lastN')?.invalid && registerForm.get('lastN')?.touched">
+              <div *ngIf="registerForm.get('lastN')?.hasError('required')">
+                Este campo es obligatorio
+              </div>
+              <div *ngIf="registerForm.get('lastN')?.hasError('minlength')">
+                Mínimo 3 caracteres
+              </div>
             </div>
           </div>
         </div>
@@ -50,14 +70,11 @@
           <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
             Correo electrónico <span class="text-red-500">*</span>
           </label>
-          <input
-            type="email"
-            id="email"
-            formControlName="email"
+          <input type="email" id="email" formControlName="email"
             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            placeholder="ejemplo@email.com"
-          >
-          <div class="text-red-500 text-sm mt-1" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            placeholder="ejemplo@email.com">
+          <div class="text-red-500 text-sm mt-1 error"
+            *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
             <div *ngIf="registerForm.get('email')?.hasError('required')">
               Este campo es obligatorio
             </div>
@@ -73,22 +90,17 @@
             Contraseña <span class="text-red-500">*</span>
           </label>
           <div class="relative">
-            <input
-              [type]="passwordVisible ? 'text' : 'password'"
-              id="password"
-              formControlName="password"
+            <input [type]="passwordVisible ? 'text' : 'password'" id="password" formControlName="password"
               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 pr-10"
-              placeholder="Mínimo 8 caracteres"
-            >
-            <button
-              type="button"
+              placeholder="Mínimo 8 caracteres">
+            <button type="button"
               class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
-              (click)="togglePasswordVisibility('password')"
-            >
+              (click)="togglePasswordVisibility('password')">
               {{ passwordVisible ? '👁️' : '👁️‍🗨️' }}
             </button>
           </div>
-          <div class="text-red-500 text-sm mt-1" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          <div class="text-red-500 text-sm mt-1 error"
+            *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
             <div *ngIf="registerForm.get('password')?.hasError('required')">
               Este campo es obligatorio
             </div>
@@ -99,24 +111,28 @@
               La contraseña debe contener mayúsculas, minúsculas, números y caracteres especiales
             </div>
           </div>
-          
+
           <!-- Password Criteria -->
-          <div class="mt-2 text-xs text-gray-600">
-            <p class="font-medium">Requisitos de contraseña:</p>
+          <div class="mt-2 text-xs text-gray-600 req-pass">
+            <p class="font-medium mb-2">Requisitos de contraseña:</p>
             <ul class="list-disc list-inside">
-              <li [class.text-green-600]="passwordCriteria.minLength" [class.text-red-500]="!passwordCriteria.minLength">
+              <li [class.text-green-600]="passwordCriteria.minLength"
+                [class.text-red-500]="!passwordCriteria.minLength">
                 Mínimo 8 caracteres
               </li>
-              <li [class.text-green-600]="passwordCriteria.uppercase" [class.text-red-500]="!passwordCriteria.uppercase">
+              <li [class.text-green-600]="passwordCriteria.uppercase"
+                [class.text-red-500]="!passwordCriteria.uppercase">
                 Al menos una mayúscula
               </li>
-              <li [class.text-green-600]="passwordCriteria.lowercase" [class.text-red-500]="!passwordCriteria.lowercase">
+              <li [class.text-green-600]="passwordCriteria.lowercase"
+                [class.text-red-500]="!passwordCriteria.lowercase">
                 Al menos una minúscula
               </li>
               <li [class.text-green-600]="passwordCriteria.number" [class.text-red-500]="!passwordCriteria.number">
                 Al menos un número
               </li>
-              <li [class.text-green-600]="passwordCriteria.specialChar" [class.text-red-500]="!passwordCriteria.specialChar">
+              <li [class.text-green-600]="passwordCriteria.specialChar"
+                [class.text-red-500]="!passwordCriteria.specialChar">
                 Al menos un carácter especial
               </li>
             </ul>
@@ -129,22 +145,18 @@
             Confirmar Contraseña <span class="text-red-500">*</span>
           </label>
           <div class="relative">
-            <input
-              [type]="confirmPasswordVisible ? 'text' : 'password'"
-              id="confirmPassword"
+            <input [type]="confirmPasswordVisible ? 'text' : 'password'" id="confirmPassword"
               formControlName="confirmPassword"
               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 pr-10"
-              placeholder="Repite tu contraseña"
-            >
-            <button
-              type="button"
+              placeholder="Repite tu contraseña">
+            <button type="button"
               class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700"
-              (click)="togglePasswordVisibility('confirmPassword')"
-            >
+              (click)="togglePasswordVisibility('confirmPassword')">
               {{ confirmPasswordVisible ? '👁️' : '👁️‍🗨️' }}
             </button>
           </div>
-          <div class="text-red-500 text-sm mt-1" *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+          <div class="text-red-500 text-sm mt-1 error"
+            *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
             <div *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
               Confirma tu contraseña
             </div>
@@ -156,28 +168,26 @@
 
         <!-- Privacy Policy -->
         <div class="mb-6 text-sm text-gray-600">
-          <p>
-            Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web, 
-            gestionar el acceso a tu cuenta y otros propósitos descritos en nuestra 
+          <p class="font-size-small">
+            Tus datos personales se utilizarán para procesar tu pedido, mejorar tu experiencia en esta web,
+            gestionar el acceso a tu cuenta y otros propósitos descritos en nuestra
             <a href="#" class="text-blue-600 hover:text-blue-500">política de privacidad</a>.
           </p>
         </div>
 
         <!-- Submit Button -->
-        <button
-          type="submit"
+        <button type="submit"
           class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          [disabled]="!registerForm.valid"
-        >
+          [disabled]="!registerForm.valid">
           Registrarse
         </button>
       </form>
 
       <!-- Login Link -->
       <div class="mt-6 text-center text-sm">
-        <p class="text-gray-600">
-          ¿Ya tienes cuenta? 
-          <a routerLink="/login" class="font-medium text-blue-600 hover:text-blue-500">
+        <p class="text-gray-600 font-size-small">
+          ¿Ya tienes cuenta?
+          <a [routerLink]="['/login']" class="font-medium text-blue-600 hover:text-blue-500">
             Inicia sesión
           </a>
         </p>
@@ -186,7 +196,7 @@
   </div>
 
   <!-- Footer Links -->
-  <div class="max-w-md mx-auto mt-8 text-center text-sm text-gray-500">
+  <!-- <div class="max-w-md mx-auto mt-8 text-center text-sm text-gray-500">
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       <a href="#" class="hover:text-gray-700">Términos de servicio</a>
       <a href="#" class="hover:text-gray-700">Políticas de privacidad</a>
@@ -195,5 +205,5 @@
       <a href="#" class="hover:text-gray-700">Problemas al descargar</a>
     </div>
     <p class="mt-4">Desarrollado por TuxFitness Team</p>
-  </div>
+  </div> -->
 </div>

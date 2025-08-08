@@ -10,11 +10,17 @@ import { HomeComponent } from './components/pagina_principal/home/home.component
 import { NavbarComponent } from './components/pagina_principal/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
+import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
+import { isAuthGuard } from './guards/is-auth.guard';
 
 
 const routes: Routes = [
+  {
+    path: 'shared',
+    loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule)
+  },
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate:[isAuthGuard] },
   { path: 'register', component: RegisterComponent },
 
   { path: 'daily-routine',component: DailyRoutineComponent },

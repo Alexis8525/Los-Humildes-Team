@@ -1,0 +1,43 @@
+<!-- components/progress-tracker/progress-tracker.component.html -->
+<div class="progress-container">
+  <h2>Seguimiento de Progreso</h2>
+  
+  <div class="routine-selector">
+    <h3>Selecciona una Rutina Semanal</h3>
+    <div *ngFor="let routine of weeklyRoutines" 
+         class="routine-card" 
+         (click)="selectRoutine(routine)">
+      {{ routine.name }}
+    </div>
+  </div>
+
+  <div *ngIf="selectedRoutine" class="routine-details">
+    <h3>{{ selectedRoutine ?  selectedRoutine.name : ''}}</h3>
+    
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="currentWeekProgress"></div>
+      <!-- <span>{{ currentWeekProgress | number:'1.0-0' }}% completado</span> -->
+      <span>{{ currentWeekProgress }}% completado</span>
+    </div>
+    
+    <div *ngFor="let day of selectedRoutine.rutinas; let i = index" class="day-container">
+      <h4>{{ getDayName(day.day) }} 
+        <span [class.completed]="day.completada">
+          {{ day.completada ? '✓ Completado' : 'Pendiente' }}
+        </span>
+      </h4>
+      
+      <div *ngFor="let exercise of day.exercises; let j = index" 
+           class="exercise-item" 
+           [class.completed]="exercise.completado"
+           (click)="toggleExerciseCompletion(i, j)">
+        <div>
+          <strong>{{ getExerciseName(exercise.exerciseId) }}</strong>
+          <span>Series: {{ exercise.series }}</span>
+          <span>Reps: {{ exercise.repeticiones }}</span>
+        </div>
+        <div class="status">{{ exercise.completado ? '✓' : '◻' }}</div>
+      </div>
+    </div>
+  </div>
+</div>

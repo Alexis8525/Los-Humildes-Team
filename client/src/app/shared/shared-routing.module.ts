@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConfirmAccountComponent } from '../components/confirm-account/confirm-account.component';
+import { ConfirmAccountComponent } from './confirm-account/confirm-account.component';
 import { LayoutSharedPageComponent } from '../pages/layout-shared-page/layout-shared-page.component';
-import { ConfirmTknNwpassComponent } from '../components/confirm-tkn-nwpass/confirm-tkn-nwpass.component';
+import { ConfirmTknNwpassComponent } from './confirm-tkn-nwpass/confirm-tkn-nwpass.component';
+import { AccountCreatedComponent } from './account-created/account-created.component';
+import { Code2fComponent } from './code2f/code2f.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,14 @@ const routes: Routes = [
       {
         path:'confirm-tkn-pass/:token',
         component:ConfirmTknNwpassComponent
+      },
+      {
+        path:'created',
+        component:AccountCreatedComponent
+      },
+      {
+        path:'2fa/:id',
+        component:Code2fComponent
       }
     ]
   }

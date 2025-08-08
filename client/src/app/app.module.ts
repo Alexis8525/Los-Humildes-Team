@@ -18,13 +18,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // Localización
 import { LOCALE_ID } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import { DecimalPipe, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { DatePipe } from '@angular/common';
 
 // Componentes
 import { AppComponent } from './app.component';
-
 
 import { ExerciseListComponent } from './components/excercise-list/excercise-list.component'; // Asegúrate de que el nombre del componente sea correcto
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
@@ -32,6 +31,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
 import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
 import { BarraLateralComponent } from './components/pagina_principal/barra-lateral/barra-lateral.component';
+
+import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
+import { Code2fComponent } from './shared/code2f/code2f.component';
 
 // Registra el idioma español
 registerLocaleData(localeEs);
@@ -41,6 +43,9 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
+    ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
+    //DailyRoutineComponent, 
+    //WeeklyRoutineComponent, ProgressTrackerComponent
   ],
   imports: [
     // Angular Modules
@@ -69,10 +74,11 @@ registerLocaleData(localeEs);
     ReactiveFormsModule, 
     RouterModule,
 
+
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'es-ES' }, // Configuración de localización
-    DatePipe // Proveedor para usar DatePipe en los componentes
+    { provide: LOCALE_ID, useValue: 'es-ES' }, // Configuración de localización (es)
+    DatePipe, // Proveedor para usar DatePipe en los componentes,
   ],
 
   bootstrap: [AppComponent]

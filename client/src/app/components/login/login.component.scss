@@ -41,3 +41,17 @@ input[type="checkbox"]:checked {
 button:hover {
   transform: translateY(-1px);
 }
+
+label {
+  font-size: 1.4rem;
+}
+
+a{
+  font-size: 1.1rem;
+}
+
+button {
+  font-size: 1.4rem;
+  padding-block: 1rem;
+  font-weight: 500;
+}

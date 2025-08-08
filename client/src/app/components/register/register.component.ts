@@ -1,9 +1,12 @@
 // register.component.ts
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
+import { AuthService } from '../../services/auth/auth.service';
+import { catchError, of, tap } from 'rxjs';
+import { Respuesta } from '../../interfaces/respuesta.interface';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +15,8 @@ import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NavbarComponent
+    NavbarComponent,
+    RouterLink
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
@@ -21,18 +25,21 @@ export class RegisterComponent {
   registerForm: FormGroup;
   passwordVisible = false;
   confirmPasswordVisible = false;
+  private authService = inject(AuthService);
+  public respuesta = signal<Respuesta>({ status: 'error', msg: '', data: undefined });
 
   constructor(
     private fb: FormBuilder,
     private router: Router
   ) {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
-    }, { 
-      validators: [this.passwordMatchValidator, this.passwordStrengthValidator] 
+      name: ['jose', [Validators.required, Validators.minLength(3)]],
+      lastN: ['pvtencio', [Validators.required, Validators.minLength(3)]],
+      email: ['test2@email.com', [Validators.required, Validators.email]],
+      password: ['Pass*123456', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['Pass*123456', Validators.required]
+    }, {
+      validators: [this.passwordMatchValidator, this.passwordStrengthValidator]
     });
   }
 
@@ -47,15 +54,15 @@ export class RegisterComponent {
   passwordStrengthValidator(control: AbstractControl) {
     const password = control.get('password')?.value;
     if (!password) return null;
-  
+
     const hasNumber = /\d/.test(password);
     const hasUpper = /[A-Z]/.test(password);
     const hasLower = /[a-z]/.test(password);
     const hasSpecial = /[^A-Za-z0-9]/.test(password);
     const hasMinLength = password.length >= 8;
-  
+
     const valid = hasNumber && hasUpper && hasLower && hasSpecial && hasMinLength;
-  
+
     return valid ? null : { strength: true };
   }
 
@@ -85,7 +92,21 @@ export class RegisterComponent {
     if (this.registerForm.valid) {
       console.log('Formulario válido:', this.registerForm.value);
       // Aquí iría la lógica para enviar los datos al backend
-      this.router.navigate(['/login']);
+      this.authService.register(this.registerForm.value).pipe(
+        tap({
+          next: (resp: Respuesta) => {
+            this.respuesta.set(resp);
+            console.log(this.respuesta());
+            this.router.navigate(['/shared/created']);
+          },
+        }),
+        catchError((err) => {
+          this.respuesta.set(err.error);
+          console.log(this.respuesta());
+          return of(null)
+        })
+      ).subscribe();
+      //this.router.navigate(['/login']);
     }
   }
 }
