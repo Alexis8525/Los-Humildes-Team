@@ -1,0 +1,186 @@
+<div class="wrapper">
+  
+    <div class="main">
+        
+      <!-- Barra de navegación con la barra de búsqueda global -->
+      <nav class="navbar navbar-expand-lg p-0" style="background-color: #001f3f;">
+        <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+          <!-- Logo -->
+          <a class="navbar-brand ms-3" href="/pagina-principal">
+            <img src="assets/tuxfitnes.png" alt="LexVargas Logo" width="50" class="d-inline-block align-text-top">
+          </a>
+        </div>
+      </nav>
+  
+      <div class="p-3">  
+        <app-barra-lateral></app-barra-lateral>
+
+        <!-- Contenido original de tu página -->
+        <div class="dashboard-container">
+          <!-- Header de bienvenida -->
+          <header class="welcome-header bg-gradient-to-r from-blue-600 to-purple-600 text-white py-12 px-6 rounded-xl shadow-lg mb-8">
+            <div class="container mx-auto">
+              <h1 class="text-3xl md:text-4xl font-bold mb-4">¡Bienvenido de vuelta!</h1>
+              <p class="text-xl md:text-2xl opacity-90">Estás listo para continuar con tu transformación física</p>
+            </div>
+          </header>
+  
+          <!-- Resumen rápido -->
+          <section class="quick-stats grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="stat-card bg-white p-6 rounded-xl shadow-md flex items-center">
+              <div class="icon-box bg-blue-100 text-blue-600 p-4 rounded-full mr-4">
+                <i class="lni lni-calendar text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-gray-500 text-sm font-medium">Rutina actual</h3>
+                <p class="text-xl font-bold">Reto 30 días</p>
+              </div>
+            </div>
+            
+            <div class="stat-card bg-white p-6 rounded-xl shadow-md flex items-center">
+              <div class="icon-box bg-green-100 text-green-600 p-4 rounded-full mr-4">
+                <i class="lni lni-checkmark-circle text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-gray-500 text-sm font-medium">Días completados</h3>
+                <p class="text-xl font-bold">12/30</p>
+              </div>
+            </div>
+            
+            <div class="stat-card bg-white p-6 rounded-xl shadow-md flex items-center">
+              <div class="icon-box bg-orange-100 text-orange-600 p-4 rounded-full mr-4">
+                <i class="lni lni-flame text-2xl"></i>
+              </div>
+              <div>
+                <h3 class="text-gray-500 text-sm font-medium">Próximo entrenamiento</h3>
+                <p class="text-xl font-bold">Piernas y cardio</p>
+              </div>
+            </div>
+          </section>
+  
+          <!-- Acciones rápidas -->
+          <section class="quick-actions mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">¿Qué quieres hacer hoy?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <a [routerLink]="['/daily-routine']" class="action-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                <div class="icon-box bg-blue-100 text-blue-600 p-4 rounded-full mb-4">
+                  <i class="lni lni-list text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Rutina diaria</h3>
+                <p class="text-gray-600 text-sm">Comienza tu entrenamiento del día</p>
+              </a>
+              
+              <a [routerLink]="['/weekly-routine']" class="action-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                <div class="icon-box bg-purple-100 text-purple-600 p-4 rounded-full mb-4">
+                  <i class="lni lni-calendar text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Plan semanal</h3>
+                <p class="text-gray-600 text-sm">Revisa tu planificación</p>
+              </a>
+              
+              <a href="#" class="action-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                <div class="icon-box bg-green-100 text-green-600 p-4 rounded-full mb-4">
+                  <i class="lni lni-stats-up text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Progreso</h3>
+                <p class="text-gray-600 text-sm">Mira tus avances</p>
+              </a>
+              
+              <a href="#" class="action-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                <div class="icon-box bg-orange-100 text-orange-600 p-4 rounded-full mb-4">
+                  <i class="lni lni-cog text-2xl"></i>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Configuración</h3>
+                <p class="text-gray-600 text-sm">Personaliza tu experiencia</p>
+              </a>
+            </div>
+          </section>
+  
+          <!-- Progreso actual -->
+          <section class="current-progress bg-white rounded-xl shadow-md p-6 mb-12">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold text-gray-800">Tu progreso</h2>
+              <a href="#" class="text-blue-600 hover:underline">Ver detalle</a>
+            </div>
+            
+            <div class="progress-bar bg-gray-200 rounded-full h-4 mb-4">
+              <div class="bg-blue-600 h-4 rounded-full" style="width: 40%"></div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 text-center">
+              <div>
+                <p class="text-gray-500 text-sm">Días completados</p>
+                <p class="text-xl font-bold">12</p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-sm">Porcentaje</p>
+                <p class="text-xl font-bold">40%</p>
+              </div>
+              <div>
+                <p class="text-gray-500 text-sm">Restantes</p>
+                <p class="text-xl font-bold">18</p>
+              </div>
+            </div>
+          </section>
+  
+          <!-- Motivación -->
+          <section class="motivation bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl shadow-lg p-8 mb-12">
+            <div class="max-w-2xl mx-auto text-center">
+              <i class="lni lni-bulb text-4xl mb-4"></i>
+              <h2 class="text-2xl font-bold mb-4">"La disciplina es el puente entre tus metas y tus logros"</h2>
+              <p class="opacity-90 mb-6">Continúa con tu rutina y verás los resultados. ¡Tú puedes!</p>
+              <button class="bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all">
+                Continuar entrenamiento
+              </button>
+            </div>
+          </section>
+  
+          <!-- Últimos logros -->
+          <section class="achievements mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Tus últimos logros</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="achievement-card bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500">
+                <div class="flex items-start mb-4">
+                  <div class="achievement-badge bg-blue-100 text-blue-600 p-2 rounded-full mr-4">
+                    <i class="lni lni-medall"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Primera semana completa</h3>
+                    <p class="text-gray-500 text-sm">Completado el 15/05/2023</p>
+                  </div>
+                </div>
+                <p class="text-gray-700">Has completado 7 días consecutivos de entrenamiento</p>
+              </div>
+              
+              <div class="achievement-card bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500">
+                <div class="flex items-start mb-4">
+                  <div class="achievement-badge bg-green-100 text-green-600 p-2 rounded-full mr-4">
+                    <i class="lni lni-star"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Récord personal</h3>
+                    <p class="text-gray-500 text-sm">Completado el 12/05/2023</p>
+                  </div>
+                </div>
+                <p class="text-gray-700">Has batido tu récord en entrenamiento de piernas</p>
+              </div>
+              
+              <div class="achievement-card bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500">
+                <div class="flex items-start mb-4">
+                  <div class="achievement-badge bg-purple-100 text-purple-600 p-2 rounded-full mr-4">
+                    <i class="lni lni-timer"></i>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold">Consistencia</h3>
+                    <p class="text-gray-500 text-sm">Completado el 10/05/2023</p>
+                  </div>
+                </div>
+                <p class="text-gray-700">3 días seguidos entrenando en la mañana</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>

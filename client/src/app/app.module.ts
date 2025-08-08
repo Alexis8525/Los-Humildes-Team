@@ -29,6 +29,9 @@ import { ExerciseListComponent } from './components/excercise-list/excercise-lis
 import { DailyRoutineComponent } from './components/daily-routine/daily-routine.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routine.component';
+import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
+import { BarraLateralComponent } from './components/pagina_principal/barra-lateral/barra-lateral.component';
+
 import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
 import { Code2fComponent } from './shared/code2f/code2f.component';
 

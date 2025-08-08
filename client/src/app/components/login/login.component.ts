@@ -12,6 +12,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
+import { BarraLateralComponent } from '../pagina_principal/barra-lateral/barra-lateral.component';
 import { AuthService } from '../../services/auth/auth.service';
 import { Respuesta } from '../../interfaces/respuesta.interface';
 import { catchError, of, tap } from 'rxjs';
@@ -26,7 +27,6 @@ import { SharedModule } from '../../shared/shared.module';
     ReactiveFormsModule,
     NavbarComponent,
     SharedModule,
-
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
@@ -57,6 +57,7 @@ export class LoginComponent {
       console.log('Formulario válido:', this.loginForm.value);
       // Aquí iría la lógica para autenticar al usuario
       // Ejemplo: this.authService.login(this.loginForm.value);
+      this.router.navigate(['/pagina-principal']);
       //this.router.navigate(['/dashboard']);
       this.authService.login(this.loginForm.value).pipe(
         tap({
@@ -72,7 +73,6 @@ export class LoginComponent {
           return of(null)
         })
       ).subscribe();
-
     }
   }
 

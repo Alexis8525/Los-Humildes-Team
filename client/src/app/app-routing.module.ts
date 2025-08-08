@@ -9,6 +9,7 @@ import { WeeklyRoutineComponent } from './components/weekly-routine/weekly-routi
 import { HomeComponent } from './components/pagina_principal/home/home.component';
 import { NavbarComponent } from './components/pagina_principal/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginaPrincipalComponent } from './components/pagina_principal/pagina-principal/pagina-principal.component';
 import { ProgressTrackerComponent } from './components/progress-tracker/progress-tracker.component';
 import { isAuthGuard } from './guards/is-auth.guard';
 
@@ -22,18 +23,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate:[isAuthGuard] },
   { path: 'register', component: RegisterComponent },
 
-  {
-    path: 'daily-routine',
-    component: DailyRoutineComponent
-  },
-  /* {
-    path: '',
-    redirectTo: '/',
-    pathMatch: 'full'
-  }, */
+  { path: 'daily-routine',component: DailyRoutineComponent },
   { path: 'weekly-routine', component: WeeklyRoutineComponent },
-  { path: 'progress', component: ProgressTrackerComponent },
-  /* { path: '', redirectTo: '/progress', pathMatch: 'full' } */
+  { path: 'pagina-principal', component: PaginaPrincipalComponent },
 ];
 
 @NgModule({

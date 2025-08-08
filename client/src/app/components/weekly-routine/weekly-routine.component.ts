@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from '../pagina_principal/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BarraLateralComponent } from '../pagina_principal/barra-lateral/barra-lateral.component';
 
 @Component({
   selector: 'app-weekly-routine',
@@ -16,9 +17,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       CommonModule,
       FormsModule,
       ReactiveFormsModule,
-      NavbarComponent,
       MatIconModule,
-      MatProgressSpinnerModule
+      MatProgressSpinnerModule,
+      BarraLateralComponent
       ],
   templateUrl: './weekly-routine.component.html',
   styleUrls: ['./weekly-routine.component.scss']
