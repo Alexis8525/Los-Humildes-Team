@@ -4,9 +4,22 @@ import { RoutineService } from '../../services/routine.service';
 import { Exercise } from '../../models/exercise.model';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Routine, RoutineExercise } from '../../models/routine.model';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from '../../pagina_principal/navbar/navbar.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-daily-routine',
+   standalone: true,
+    imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NavbarComponent,
+    MatIconModule,
+    MatProgressSpinnerModule
+    ],
   templateUrl: './daily-routine.component.html',
   styleUrls: ['./daily-routine.component.scss']
 })
