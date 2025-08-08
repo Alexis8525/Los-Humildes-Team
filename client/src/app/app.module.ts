@@ -43,7 +43,8 @@ registerLocaleData(localeEs);
     LoginComponent,
     RegisterComponent,
     ExerciseListComponent, // Corregí el nombre de "Excercise" a "Exercise"
-    DailyRoutineComponent, WeeklyRoutineComponent,
+    DailyRoutineComponent, 
+    WeeklyRoutineComponent
   ],
   imports: [
     // Angular Modules
@@ -55,6 +56,7 @@ registerLocaleData(localeEs);
     
     // App Routing
     AppRoutingModule,
+
     
     // Angular Material Modules (agrupados)
     MatFormFieldModule,
@@ -69,7 +71,8 @@ registerLocaleData(localeEs);
     MatDatepickerModule,
   
     ReactiveFormsModule, 
-    RouterModule 
+    RouterModule,
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-ES' }, // Configuración de localización
