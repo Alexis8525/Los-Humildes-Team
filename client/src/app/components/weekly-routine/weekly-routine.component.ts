@@ -1,4 +1,3 @@
-// components/weekly-routine/weekly-routine.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ExerciseService } from '../../services/exercise.service';
 import { WeeklyRoutineService } from '../../services/weekly-routine.service';

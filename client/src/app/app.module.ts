@@ -45,8 +45,8 @@ registerLocaleData(localeEs);
   ],
   imports: [
     // Angular Modules
+    HttpClientModule,
     BrowserModule,
-    HttpClientModule, // Moved up for better organization
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
