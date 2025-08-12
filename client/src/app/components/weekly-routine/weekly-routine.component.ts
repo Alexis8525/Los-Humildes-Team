@@ -160,8 +160,7 @@ toggleSidebar(): void {
 
 logout(): void {
   if (this.isBrowser) {
-    // Aquí puedes agregar lógica para limpiar localStorage/sessionStorage si es necesario
-    this.router.navigate(['/login']); // Ajusta la ruta según tu configuración
+    this.router.navigate(['/login']);
   }
 }
 

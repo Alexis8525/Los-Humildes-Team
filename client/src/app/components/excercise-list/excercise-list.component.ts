@@ -69,6 +69,7 @@ export class ExerciseListComponent implements OnInit {
   isCollapsed = false;
 
 
+
   constructor(
     private http: HttpClient,
     private renderer: Renderer2, 
