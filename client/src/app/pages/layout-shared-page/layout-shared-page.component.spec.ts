@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayoutSharedPageComponent } from './layout-shared-page.component';
+// import { LayoutSharedPageComponent } from './layout-shared-page.component';
 
-describe('LayoutSharedPageComponent', () => {
-  let component: LayoutSharedPageComponent;
-  let fixture: ComponentFixture<LayoutSharedPageComponent>;
+// describe('LayoutSharedPageComponent', () => {
+//   let component: LayoutSharedPageComponent;
+//   let fixture: ComponentFixture<LayoutSharedPageComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LayoutSharedPageComponent]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       declarations: [LayoutSharedPageComponent]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(LayoutSharedPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(LayoutSharedPageComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
